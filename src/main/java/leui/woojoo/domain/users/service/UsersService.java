@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 @RequiredArgsConstructor
 @Service
@@ -146,6 +147,13 @@ public class UsersService {
         return users.getBlocklist()
                 .stream()
                 .map(Users::getId)
+                .toList();
+    }
+
+    public List<String> getMyFriendFcmTokenList(Users user) {
+        Set<Users> friends = user.getFriends();
+        return friends.stream()
+                .map(Users::getFcmToken)
                 .toList();
     }
 }

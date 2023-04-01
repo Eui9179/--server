@@ -1,4 +1,4 @@
-package leui.woojoo.utils.file;
+package leui.woojoo.utils;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

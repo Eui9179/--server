@@ -6,7 +6,7 @@ import leui.woojoo.domain.users.dto.web.MyFriendsResponse;
 import leui.woojoo.domain.users.dto.web.NewFriendResponse;
 import leui.woojoo.domain.users.service.RelationshipService;
 import leui.woojoo.domain.users.service.UsersService;
-import leui.woojoo.domain.users.utils.UserUtils;
+import leui.woojoo.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -16,7 +16,6 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 @RequiredArgsConstructor
 @Slf4j

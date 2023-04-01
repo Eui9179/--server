@@ -1,19 +1,15 @@
 package leui.woojoo.domain.today_games.controller;
 
-import leui.woojoo.domain.today_games.TodayGames;
-import leui.woojoo.domain.today_games.dto.TodayGameDetail;
+import leui.woojoo.domain.today_games.dto.CreateTodayGameRequest;
 import leui.woojoo.domain.today_games.dto.TodayGamesResponse;
 import leui.woojoo.domain.today_games.service.TodayGamesService;
-import leui.woojoo.domain.users.utils.UserUtils;
+import leui.woojoo.domain.users.service.UsersService;
+import leui.woojoo.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -21,11 +17,23 @@ import java.util.List;
 public class TodayGamesController {
 
     private final TodayGamesService todayGamesService;
+    private final UsersService usersService;
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping
     public TodayGamesResponse getTodayGames(Principal principal) {
         Long userId = UserUtils.resolveUserId(principal);
         return new TodayGamesResponse(todayGamesService.findAllByToday(userId));
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping
+    public String createTodayGames(Principal principal, @RequestBody CreateTodayGameRequest request) {
+        Long userId = UserUtils.resolveUserId(principal);
+        todayGamesService.save(userId, request);
+
+
+
+        return "ok";
     }
 }

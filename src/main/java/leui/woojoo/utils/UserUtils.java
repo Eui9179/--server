@@ -1,4 +1,4 @@
-package leui.woojoo.domain.users.utils;
+package leui.woojoo.utils;
 
 import org.springframework.security.core.userdetails.User;
 
