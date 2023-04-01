@@ -1,5 +1,6 @@
 package leui.woojoo.domain.today_games.controller;
 
+import com.google.firebase.messaging.FirebaseMessagingException;
 import leui.woojoo.domain.today_games.dto.CreateTodayGameRequest;
 import leui.woojoo.domain.today_games.dto.TodayGamesResponse;
 import leui.woojoo.domain.today_games.service.TodayGamesService;
@@ -28,12 +29,9 @@ public class TodayGamesController {
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping
-    public String createTodayGames(Principal principal, @RequestBody CreateTodayGameRequest request) {
+    public String createTodayGames(Principal principal, @RequestBody CreateTodayGameRequest request) throws FirebaseMessagingException {
         Long userId = UserUtils.resolveUserId(principal);
         todayGamesService.save(userId, request);
-
-
-
         return "ok";
     }
 }
