@@ -18,7 +18,6 @@ import java.security.Principal;
 public class TodayGamesController {
 
     private final TodayGamesService todayGamesService;
-    private final UsersService usersService;
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping
