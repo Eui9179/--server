@@ -2,8 +2,6 @@ package leui.woojoo.utils;
 
 import com.google.firebase.messaging.*;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
