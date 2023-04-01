@@ -26,9 +26,7 @@ file:
 
 
 jwt:
-  header: Authorization
   password: testpassword1234
-  token-validity-in-seconds: 86400
 
 project:
   properties:
