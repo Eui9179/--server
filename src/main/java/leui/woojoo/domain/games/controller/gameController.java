@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/games")
 public class gameController {
+
     private final GamesService gamesService;
 
     @GetMapping("/me")
