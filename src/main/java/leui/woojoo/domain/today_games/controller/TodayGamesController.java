@@ -33,4 +33,11 @@ public class TodayGamesController {
         todayGamesService.save(userId, request);
         return "ok";
     }
+
+    @PreAuthorize("isAuthenticated()")
+    @DeleteMapping("/{todayGameId}")
+    public String deleteTodayGame(@PathVariable Long todayGameId) {
+        todayGamesService.deleteById(todayGameId);
+        return "ok";
+    }
 }

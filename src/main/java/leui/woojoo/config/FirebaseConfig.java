@@ -25,7 +25,7 @@ public class FirebaseConfig {
     @Bean
     GoogleCredentials googleCredentials() throws IOException {
         return GoogleCredentials
-                .fromStream(new ClassPathResource("resources/firebase-admin.json").getInputStream())
+                .fromStream(new ClassPathResource("firebase-admin.json").getInputStream())
                 .createScoped(Collections.singletonList(fireBaseCreateScoped));
     }
 

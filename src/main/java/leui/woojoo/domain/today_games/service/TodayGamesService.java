@@ -50,4 +50,8 @@ public class TodayGamesService {
                 user.getName() + "님의 오늘의 게임",
                 ToKor.gameNameToKor(todayGame.getGame()) + "  " + todayGame.getIntroduction());
     }
+
+    public void deleteById(Long todayGameId) {
+        todayGamesRepository.deleteById(todayGameId);
+    }
 }
