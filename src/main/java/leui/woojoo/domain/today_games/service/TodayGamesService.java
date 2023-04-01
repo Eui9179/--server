@@ -1,11 +1,14 @@
 package leui.woojoo.domain.today_games.service;
 
+import com.google.firebase.messaging.FirebaseMessagingException;
 import leui.woojoo.domain.today_games.TodayGames;
 import leui.woojoo.domain.today_games.dto.CreateTodayGameRequest;
 import leui.woojoo.domain.today_games.dto.TodayGameDetail;
 import leui.woojoo.domain.today_games.repository.TodayGamesRepository;
 import leui.woojoo.domain.users.Users;
 import leui.woojoo.domain.users.service.UsersService;
+import leui.woojoo.utils.NotificationUtils;
+import leui.woojoo.utils.ToKor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +23,8 @@ public class TodayGamesService {
     private final TodayGamesRepository todayGamesRepository;
     private final UsersService usersService;
 
+    private final NotificationUtils notificationUtils;
+
     public List<TodayGameDetail> findAllByToday(Long userId) {
         LocalDateTime today = LocalDate.now().atStartOfDay();
         LocalDateTime tomorrow = LocalDateTime.now().plusDays(1);
@@ -30,7 +35,7 @@ public class TodayGamesService {
                 .toList();
     }
 
-    public void save(Long userId, CreateTodayGameRequest todayGame) {
+    public void save(Long userId, CreateTodayGameRequest todayGame) throws FirebaseMessagingException {
         Users user = usersService.findById(userId);
         TodayGames entity = TodayGames.builder()
                 .users(user)
@@ -41,6 +46,8 @@ public class TodayGamesService {
 
         List<String> myFriendFcmTokenList = usersService.getMyFriendFcmTokenList(user);
 
-
+        notificationUtils.sendMessageToFriends(myFriendFcmTokenList,
+                user.getName() + "님의 오늘의 게임",
+                ToKor.gameNameToKor(todayGame.getGame()) + "  " + todayGame.getIntroduction());
     }
 }
