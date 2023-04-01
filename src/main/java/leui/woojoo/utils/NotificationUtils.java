@@ -1,23 +1,19 @@
 package leui.woojoo.utils;
 
 import com.google.firebase.messaging.*;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Setter
-@Component
+@RequiredArgsConstructor
 public class NotificationUtils implements Runnable{
 
     private final FirebaseMessaging instance;
     private List<String> fcmTokenList;
     private String title;
     private String body;
-
-    public NotificationUtils(FirebaseMessaging instance) {
-        this.instance = instance;
-    }
 
     public void setData(List<String> fcmTokenList, String title, String body) {
         this.fcmTokenList = fcmTokenList;
