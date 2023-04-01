@@ -4,10 +4,9 @@ import leui.woojoo.domain.users.dto.UserDetail;
 import leui.woojoo.domain.users.dto.UserProfileUpdate;
 import leui.woojoo.domain.users.dto.web.UserProfileResponse;
 import leui.woojoo.domain.users.dto.web.UserSettingRequest;
-import leui.woojoo.domain.users.service.RelationshipService;
 import leui.woojoo.domain.users.service.UsersService;
-import leui.woojoo.utils.UserUtils;
 import leui.woojoo.utils.FileUtils;
+import leui.woojoo.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +22,6 @@ import java.io.IOException;
 public class UsersController {
 
     private final UsersService usersService;
-    private final RelationshipService relationshipService;
     private final FileUtils fileUtils;
 
     @GetMapping("/me")

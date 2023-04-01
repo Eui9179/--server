@@ -5,7 +5,6 @@ import leui.woojoo.domain.users.dto.web.FriendIdRequest;
 import leui.woojoo.domain.users.dto.web.MyFriendsResponse;
 import leui.woojoo.domain.users.dto.web.NewFriendResponse;
 import leui.woojoo.domain.users.service.RelationshipService;
-import leui.woojoo.domain.users.service.UsersService;
 import leui.woojoo.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +23,6 @@ import java.util.List;
 public class RelationshipController {
 
     private final RelationshipService relationshipService;
-    private final UsersService usersService;
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/friends/me")
