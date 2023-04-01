@@ -1,6 +1,6 @@
 package leui.woojoo.domain.users.controller;
 
-import leui.woojoo.domain.users.Users;
+import leui.woojoo.domain.users.entity.Users;
 import leui.woojoo.jwt.JwtProvider;
 import leui.woojoo.domain.groups.service.GroupsService;
 import leui.woojoo.domain.users.service.AuthService;

@@ -1,4 +1,6 @@
-package leui.woojoo.domain.games;
+package leui.woojoo.utils;
+
+import leui.woojoo.domain.games.entity.Games;
 
 import java.util.ArrayList;
 import java.util.List;

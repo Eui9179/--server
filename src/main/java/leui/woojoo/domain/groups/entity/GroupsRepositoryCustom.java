@@ -1,6 +1,5 @@
-package leui.woojoo.domain.groups.respository;
+package leui.woojoo.domain.groups.entity;
 
-import leui.woojoo.domain.users.Users;
 import leui.woojoo.domain.users.dto.UserSimple;
 
 import java.util.List;

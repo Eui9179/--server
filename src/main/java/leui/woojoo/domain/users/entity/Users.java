@@ -1,10 +1,9 @@
-package leui.woojoo.domain.users;
+package leui.woojoo.domain.users.entity;
 
 import jakarta.persistence.*;
 import leui.woojoo.domain.BaseTimeEntity;
-import leui.woojoo.domain.games.Games;
-import leui.woojoo.domain.today_games.TodayGames;
-import leui.woojoo.domain.groups.Groups;
+import leui.woojoo.domain.games.entity.Games;
+import leui.woojoo.domain.groups.entity.Groups;
 import leui.woojoo.domain.users.dto.UserSimple;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

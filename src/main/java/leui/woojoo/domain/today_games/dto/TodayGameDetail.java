@@ -2,8 +2,8 @@ package leui.woojoo.domain.today_games.dto;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import leui.woojoo.domain.games.Games;
-import leui.woojoo.domain.today_games.TodayGames;
+import leui.woojoo.domain.games.entity.Games;
+import leui.woojoo.domain.today_games.entity.TodayGames;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

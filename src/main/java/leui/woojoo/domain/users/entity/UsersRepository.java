@@ -1,6 +1,5 @@
-package leui.woojoo.domain.users.repository;
+package leui.woojoo.domain.users.entity;
 
-import leui.woojoo.domain.users.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

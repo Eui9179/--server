@@ -1,8 +1,8 @@
 package leui.woojoo.web.controller.users;
 
-import leui.woojoo.domain.groups.respository.GroupsRepository;
-import leui.woojoo.domain.users.Users;
-import leui.woojoo.domain.users.repository.UsersRepository;
+import leui.woojoo.domain.groups.entity.GroupsRepository;
+import leui.woojoo.domain.users.entity.Users;
+import leui.woojoo.domain.users.entity.UsersRepository;
 import leui.woojoo.domain.users.dto.web.SignupResponse;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;

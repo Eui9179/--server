@@ -1,11 +1,11 @@
 package leui.woojoo.domain.games.service;
 
 import leui.woojoo.DataNotFoundException;
-import leui.woojoo.domain.games.Games;
+import leui.woojoo.domain.games.entity.Games;
 import leui.woojoo.domain.games.dto.Game;
-import leui.woojoo.domain.games.repository.GamesQueryRepository;
-import leui.woojoo.domain.games.repository.GamesRepository;
-import leui.woojoo.domain.users.Users;
+import leui.woojoo.domain.games.entity.GamesQueryRepository;
+import leui.woojoo.domain.games.entity.GamesRepository;
+import leui.woojoo.domain.users.entity.Users;
 import leui.woojoo.domain.users.service.UsersService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

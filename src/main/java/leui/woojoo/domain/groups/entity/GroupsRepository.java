@@ -1,6 +1,5 @@
-package leui.woojoo.domain.groups.respository;
+package leui.woojoo.domain.groups.entity;
 
-import leui.woojoo.domain.groups.Groups;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package leui.woojoo.domain.groups;
 
-import leui.woojoo.domain.groups.respository.GroupsRepositoryImpl;
+import leui.woojoo.domain.groups.entity.GroupsRepositoryImpl;
 import leui.woojoo.domain.users.dto.UserSimple;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;

@@ -1,6 +1,6 @@
 package leui.woojoo.domain.groups.dto;
 
-import leui.woojoo.domain.groups.Groups;
+import leui.woojoo.domain.groups.entity.Groups;
 import lombok.*;
 
 @Getter

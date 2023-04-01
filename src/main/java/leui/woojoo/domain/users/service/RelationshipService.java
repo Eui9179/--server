@@ -1,7 +1,7 @@
 package leui.woojoo.domain.users.service;
 
-import leui.woojoo.domain.users.Users;
 import leui.woojoo.domain.users.dto.UserInList;
+import leui.woojoo.domain.users.entity.Users;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

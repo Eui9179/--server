@@ -1,6 +1,7 @@
 package leui.woojoo.domain.users;
 
-import leui.woojoo.domain.users.repository.UsersRepository;
+import leui.woojoo.domain.users.entity.Users;
+import leui.woojoo.domain.users.entity.UsersRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

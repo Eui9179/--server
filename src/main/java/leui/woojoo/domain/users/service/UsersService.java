@@ -1,18 +1,18 @@
 package leui.woojoo.domain.users.service;
 
 import leui.woojoo.DataNotFoundException;
-import leui.woojoo.domain.games.GameUtils;
+import leui.woojoo.utils.GameUtils;
 import leui.woojoo.domain.games.dto.Game;
-import leui.woojoo.domain.games.Games;
+import leui.woojoo.domain.games.entity.Games;
 import leui.woojoo.domain.groups.dto.GroupSimple;
-import leui.woojoo.domain.groups.Groups;
+import leui.woojoo.domain.groups.entity.Groups;
 import leui.woojoo.domain.users.dto.UserDetail;
 import leui.woojoo.domain.users.dto.UserInList;
 import leui.woojoo.domain.users.dto.UserProfileUpdate;
 import leui.woojoo.domain.users.dto.web.UserProfileResponse;
-import leui.woojoo.domain.users.Users;
-import leui.woojoo.domain.users.repository.FriendId;
-import leui.woojoo.domain.users.repository.UsersRepository;
+import leui.woojoo.domain.users.entity.Users;
+import leui.woojoo.domain.users.entity.FriendId;
+import leui.woojoo.domain.users.entity.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

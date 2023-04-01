@@ -1,6 +1,6 @@
 package leui.woojoo.domain.games.dto;
 
-import leui.woojoo.domain.games.Games;
+import leui.woojoo.domain.games.entity.Games;
 import lombok.*;
 
 @Getter

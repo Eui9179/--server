@@ -1,11 +1,11 @@
 package leui.woojoo.domain.today_games.service;
 
 import com.google.firebase.messaging.FirebaseMessagingException;
-import leui.woojoo.domain.today_games.TodayGames;
+import leui.woojoo.domain.today_games.entity.TodayGames;
 import leui.woojoo.domain.today_games.dto.CreateTodayGameRequest;
 import leui.woojoo.domain.today_games.dto.TodayGameDetail;
-import leui.woojoo.domain.today_games.repository.TodayGamesRepository;
-import leui.woojoo.domain.users.Users;
+import leui.woojoo.domain.today_games.entity.TodayGamesRepository;
+import leui.woojoo.domain.users.entity.Users;
 import leui.woojoo.domain.users.service.UsersService;
 import leui.woojoo.utils.NotificationUtils;
 import leui.woojoo.utils.ToKor;

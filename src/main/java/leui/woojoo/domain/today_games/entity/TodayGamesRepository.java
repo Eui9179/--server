@@ -1,9 +1,8 @@
-package leui.woojoo.domain.today_games.repository;
+package leui.woojoo.domain.today_games.entity;
 
-import leui.woojoo.domain.today_games.TodayGames;
+import leui.woojoo.domain.today_games.entity.TodayGames;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 

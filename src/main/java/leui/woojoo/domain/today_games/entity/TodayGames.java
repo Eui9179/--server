@@ -1,12 +1,11 @@
-package leui.woojoo.domain.today_games;
+package leui.woojoo.domain.today_games.entity;
 
 import jakarta.persistence.*;
 import leui.woojoo.domain.BaseTimeEntity;
-import leui.woojoo.domain.users.Users;
+import leui.woojoo.domain.users.entity.Users;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Getter
 @NoArgsConstructor

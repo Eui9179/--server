@@ -1,12 +1,11 @@
 package leui.woojoo.domain.groups.service;
 
-import leui.woojoo.domain.games.GameUtils;
-import leui.woojoo.domain.games.Games;
-import leui.woojoo.domain.groups.Groups;
-import leui.woojoo.domain.groups.respository.GroupsRepository;
-import leui.woojoo.domain.users.Users;
+import leui.woojoo.utils.GameUtils;
+import leui.woojoo.domain.games.entity.Games;
+import leui.woojoo.domain.groups.entity.Groups;
+import leui.woojoo.domain.groups.entity.GroupsRepository;
 import leui.woojoo.domain.users.dto.UserInList;
-import leui.woojoo.domain.users.service.RelationshipService;
+import leui.woojoo.domain.users.entity.Users;
 import leui.woojoo.domain.users.service.UsersService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

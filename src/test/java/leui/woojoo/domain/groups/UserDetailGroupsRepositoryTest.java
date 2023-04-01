@@ -1,6 +1,6 @@
 package leui.woojoo.domain.groups;
 
-import leui.woojoo.domain.groups.respository.GroupsRepository;
+import leui.woojoo.domain.groups.entity.GroupsRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

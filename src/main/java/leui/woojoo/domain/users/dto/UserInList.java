@@ -2,8 +2,8 @@ package leui.woojoo.domain.users.dto;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import leui.woojoo.domain.games.Games;
-import leui.woojoo.domain.users.Users;
+import leui.woojoo.domain.games.entity.Games;
+import leui.woojoo.domain.users.entity.Users;
 import lombok.*;
 
 import java.util.List;

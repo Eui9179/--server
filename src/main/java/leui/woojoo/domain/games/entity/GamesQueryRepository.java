@@ -1,14 +1,13 @@
-package leui.woojoo.domain.games.repository;
+package leui.woojoo.domain.games.entity;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import leui.woojoo.domain.games.Games;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-import static leui.woojoo.domain.games.QGames.*;
-import static leui.woojoo.domain.users.QUsers.users;
+import static leui.woojoo.domain.games.entity.QGames.games;
+import static leui.woojoo.domain.users.entity.QUsers.users;
 
 @RequiredArgsConstructor
 @Repository
