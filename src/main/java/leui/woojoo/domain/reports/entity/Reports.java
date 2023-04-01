@@ -1,4 +1,4 @@
-package leui.woojoo.domain.reports;
+package leui.woojoo.domain.reports.entity;
 
 import jakarta.persistence.*;
 import lombok.Builder;

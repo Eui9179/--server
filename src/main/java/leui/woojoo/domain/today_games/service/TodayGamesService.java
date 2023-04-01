@@ -1,5 +1,6 @@
 package leui.woojoo.domain.today_games.service;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingException;
 import leui.woojoo.domain.today_games.entity.TodayGames;
 import leui.woojoo.domain.today_games.dto.CreateTodayGameRequest;
@@ -23,7 +24,7 @@ public class TodayGamesService {
     private final TodayGamesRepository todayGamesRepository;
     private final UsersService usersService;
 
-    private final NotificationUtils notificationUtils;
+    private final FirebaseMessaging instance;
 
     public List<TodayGameDetail> findAllByToday(Long userId) {
         LocalDateTime today = LocalDate.now().atStartOfDay();
@@ -43,12 +44,17 @@ public class TodayGamesService {
                 .descriptions(todayGame.getIntroduction())
                 .build();
         todayGamesRepository.save(entity);
+        sendTodayGameNotification(user, todayGame.getGame(), todayGame.getIntroduction());
+    }
 
+    public void sendTodayGameNotification(Users user, String game, String gameDescription) {
         List<String> myFriendFcmTokenList = usersService.getMyFriendFcmTokenList(user);
-
-        notificationUtils.sendMessageToFriends(myFriendFcmTokenList,
+        NotificationUtils notificationUtils = new NotificationUtils(instance);
+        notificationUtils.setData(myFriendFcmTokenList,
                 user.getName() + "님의 오늘의 게임",
-                ToKor.gameNameToKor(todayGame.getGame()) + "  " + todayGame.getIntroduction());
+                ToKor.gameNameToKor(game) + "  " + gameDescription);
+        Thread t = new Thread(notificationUtils);
+        t.start();
     }
 
     public void deleteById(Long todayGameId) {
