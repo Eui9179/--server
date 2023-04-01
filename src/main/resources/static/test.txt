@@ -1,0 +1,13 @@
+insert into users set created_date=now(), fcm_token='3456', name='kim', phone_number='+1022222222', profile_image_name='default.png';
+insert into user_authority set user_id=6, authority_name='ROLE_USER';
+
+select * from users;
+
+select * from user_authority;
+
+insert into friends set user_id=1, friends_id=5;
+
+select u.id, u.name, u.profile_image_name  from friends as f inner join users as u on f.friends_id=u.id and f.user_id=3;
+select us.id, us.name, us.profile_image_name, g.group_name, g.detail1 from user_groups as g join (select u.id, u.name, u.profile_image_name  from friends as f inner join users as u on f.friends_id=u.id and f.user_id=3) as us on us.id=g.user_id;
+
+select u.id as id, u.name as name, u.profile_image_name as profile_image_name from friends as f inner join users as u on f.friends_id=u.id and f.user_id=:userId
