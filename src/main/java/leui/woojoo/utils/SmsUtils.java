@@ -7,10 +7,15 @@ import leui.woojoo.domain.users.dto.web.SmsRequest;
 import leui.woojoo.domain.users.dto.web.SmsResponse;
 import lombok.Setter;
 import org.apache.commons.codec.binary.Base64;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.event.ApplicationStartedEvent;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import javax.crypto.Mac;
@@ -25,18 +30,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Setter
+@PropertySource("classpath:application-sms.properties")
+@Component
 public class SmsUtils {
-//    @Value("${sms.serviceId}")
-    private String serviceId = "ncp:sms:kr:305396449835:woojoo";
+    @Value("${sms.serviceId}")
+    private String serviceId;
 
-//    @Value("${sms.accessKey}")
-    private String accessKey = "ULnSErxzd1AYoGao2wzX";
+    @Value("${sms.accessKey}")
+    private String accessKey;
 
-//    @Value("${sms.secretKey}")
-    private String secretKey = "noHGrMlhhf7JER9e1nZtLWeRXownAw5qMqysa0cd";
+    @Value("${sms.secretKey}")
+    private String secretKey;
 
-//    @Value("${sms.caller}")
-    private String caller = "01026649179";
+    @Value("${sms.caller}")
+    private String caller;
 
     public SmsResponse sendSms(String phoneNumber, String content) throws JsonProcessingException, UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException, URISyntaxException {
         Long time = System.currentTimeMillis();
