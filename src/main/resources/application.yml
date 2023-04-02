@@ -26,3 +26,9 @@ jwt:
 project:
   properties:
     firebase-create-scoped: "https://www.googleapis.com/auth/firebase.messaging"
+
+sms:
+  serviceId: ncp:sms:kr:305396449835:woojoo
+  accessKey: ULnSErxzd1AYoGao2wzX
+  secretKey: noHGrMlhhf7JER9e1nZtLWeRXownAw5qMqysa0cd
+  caller: 01026649179
