@@ -39,6 +39,7 @@ public class AuthController {
     private final GroupsService groupsService;
     private final JwtProvider jwtProvider;
     private final FileUtils fileUtils;
+    private final SmsUtils smsUtils;
 
     @PostMapping(value = "/signup", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<SignupResponse> signup(SignupRequest requestDto) throws IllegalStateException, IOException {
@@ -100,7 +101,7 @@ public class AuthController {
         log.info("cp = {}", cp);
         HttpSession session = request.getSession();
         session.setAttribute(phoneNumber.getPhoneNumber(), cp);
-        return new SmsUtils().sendSms(phoneNumber.getPhoneNumber(), cp);
+        return smsUtils.sendSms(phoneNumber.getPhoneNumber(), cp);
     }
 
     @PostMapping("/sms-auth")

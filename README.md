@@ -29,10 +29,11 @@ file:
 ```
 
 ### SMS Login
-application-sms.yml 파일추가
+application-sms.properties 파일 추가
 ```text
 sms:
   serviceId: {serviceId}
   accessKey: {accessKey}
   secretKey: {secretKey}
+  sms.caller = {phone number}
 ```
