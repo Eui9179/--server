@@ -8,10 +8,6 @@ spring:
     url: jdbc:mariadb://127.0.0.1:3306/woojoo?useUnicode=true&characterEncoding=utf
     username: leui
     password: 1234
-#    url: jdbc:h2:~/local
-#    driverClassName: org.h2.Driver
-#    username: sa
-#    password:
 
   jpa:
     hibernate:
@@ -24,7 +20,6 @@ spring:
 file:
   path: /Users/leui/Desktop/Leui/Workspace/woojoo-image/
 
-
 jwt:
   password: testpassword1234
 
@@ -32,4 +27,8 @@ project:
   properties:
     firebase-create-scoped: "https://www.googleapis.com/auth/firebase.messaging"
 
+sms:
+  serviceId: ncp:sms:kr:305396449835:woojoo
+  accessKey: ULnSErxzd1AYoGao2wzX
+  secretKey: noHGrMlhhf7JER9e1nZtLWeRXownAw5qMqysa0cd
 
