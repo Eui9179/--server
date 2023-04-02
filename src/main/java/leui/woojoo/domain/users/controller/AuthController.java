@@ -96,18 +96,21 @@ public class AuthController {
     }
 
     @PostMapping("/sms")
-    public SmsResponse sendSms(HttpServletRequest request, @RequestBody PhoneNumberRequest phoneNumber) throws UnsupportedEncodingException, NoSuchAlgorithmException, URISyntaxException, InvalidKeyException, JsonProcessingException {
+    public String sendSms(HttpServletRequest request, @RequestBody PhoneNumberRequest phoneNumber) throws UnsupportedEncodingException, NoSuchAlgorithmException, URISyntaxException, InvalidKeyException, JsonProcessingException {
         String cp = String.valueOf(ThreadLocalRandom.current().nextInt(100000, 1000000));
         log.info("cp = {}", cp);
         HttpSession session = request.getSession();
+        log.info("phoneNumber = {}", phoneNumber.getPhoneNumber());
         session.setAttribute(phoneNumber.getPhoneNumber(), cp);
-        return smsUtils.sendSms(phoneNumber.getPhoneNumber(), cp);
+//        return smsUtils.sendSms(phoneNumber.getPhoneNumber(), cp);
+        return "ok";
     }
 
     @PostMapping("/sms-auth")
     public ResponseEntity<String> authenticateSms(HttpServletRequest request, @RequestBody CpRequest cpRequest) {
         HttpSession session = request.getSession();
         String cpInSession = (String) session.getAttribute(cpRequest.getPhoneNumber());
+        log.info("phoneNumber = {}", cpRequest.getPhoneNumber());
         log.info("cpInSession = {}", cpInSession);
         log.info("cpInRequest = {}", cpRequest.getCp());
         if (cpRequest.getCp().equals(cpInSession)) {
