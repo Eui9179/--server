@@ -1,11 +1,9 @@
 package leui.woojoo.domain.users.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
+import leui.woojoo.domain.sms.SmsService;
 import leui.woojoo.domain.users.dto.web.*;
 import leui.woojoo.domain.users.entity.Users;
-import leui.woojoo.utils.SmsUtils;
 import leui.woojoo.jwt.JwtProvider;
 import leui.woojoo.domain.groups.service.GroupsService;
 import leui.woojoo.domain.users.service.AuthService;
@@ -23,11 +21,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URISyntaxException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.util.concurrent.ThreadLocalRandom;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -37,9 +30,9 @@ public class AuthController {
     private final AuthService authService;
     private final UsersService usersService;
     private final GroupsService groupsService;
+    private final SmsService smsService;
     private final JwtProvider jwtProvider;
     private final FileUtils fileUtils;
-    private final SmsUtils smsUtils;
 
     @PostMapping(value = "/signup", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<SignupResponse> signup(SignupRequest requestDto) throws IllegalStateException, IOException {
@@ -52,6 +45,7 @@ public class AuthController {
         Users users = authService.save(requestDto.toUserEntity(profileImageName));
 
         groupsService.save(requestDto.toUserGroupEntity(users));
+        smsService.delete(requestDto.getPhone_number());
 
         String token = jwtProvider.createToken(users.getId());
         return new ResponseEntity<>(new SignupResponse(token), HttpStatus.OK);
@@ -72,11 +66,10 @@ public class AuthController {
         }
 
         String token = jwtProvider.createToken(users.getId());
-
-        if (!request.getSession().getAttribute(phoneNumber).equals(loginRequest.getSmsCode())) {
+        if (!smsService.verify(phoneNumber, loginRequest.getSmsCode())) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
-        request.getSession().removeAttribute(phoneNumber);
+        smsService.delete(phoneNumber);
         return new ResponseEntity<>(new LoginResponse(token), HttpStatus.OK);
     }
 
@@ -93,31 +86,5 @@ public class AuthController {
     public String asyncFcmToken(@AuthenticationPrincipal User user, @RequestBody FcmRequest fcmRequest) {
         usersService.asyncFcmToken(UserUtils.resolveUserId(user), fcmRequest.getFcmToken());
         return "ok";
-    }
-
-    @PostMapping("/sms")
-    public String sendSms(HttpServletRequest request, @RequestBody PhoneNumberRequest phoneNumber) throws UnsupportedEncodingException, NoSuchAlgorithmException, URISyntaxException, InvalidKeyException, JsonProcessingException {
-        String cp = String.valueOf(ThreadLocalRandom.current().nextInt(100000, 1000000));
-        log.info("cp = {}", cp);
-        HttpSession session = request.getSession();
-        log.info("phoneNumber = {}", phoneNumber.getPhoneNumber());
-        session.setAttribute(phoneNumber.getPhoneNumber(), cp);
-//        return smsUtils.sendSms(phoneNumber.getPhoneNumber(), cp);
-        return "ok";
-    }
-
-    @PostMapping("/sms-auth")
-    public ResponseEntity<String> authenticateSms(HttpServletRequest request, @RequestBody CpRequest cpRequest) {
-        HttpSession session = request.getSession();
-        String cpInSession = (String) session.getAttribute(cpRequest.getPhoneNumber());
-        log.info("phoneNumber = {}", cpRequest.getPhoneNumber());
-        log.info("cpInSession = {}", cpInSession);
-        log.info("cpInRequest = {}", cpRequest.getCp());
-        if (cpRequest.getCp().equals(cpInSession)) {
-            log.info("cp success? -> yes");
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-        log.info("cp success? -> no");
-        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 }

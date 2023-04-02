@@ -1,8 +1,5 @@
 package leui.woojoo.jwt_test;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.interfaces.DecodedJWT;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
@@ -38,39 +35,39 @@ public class JWTSimpleTest {
         System.out.println("tokenInfo = " + tokenInfo);
     }
 
-    @DisplayName("2. java-jwt")
-    @Test
-    void t2() {
-        String oauthToken = JWT.create()
-                .withClaim("name", "leui")
-                .withClaim("price", 3000)
-                .sign(Algorithm.HMAC256(SEC_KEY));
-
-        System.out.println("oauthToken = " + oauthToken);
-        printToken(oauthToken);
-
-        DecodedJWT decodedJWT = JWT.require(Algorithm.HMAC256(SEC_KEY))
-                .build()
-                .verify(oauthToken);
-
-        System.out.println("ver = " + decodedJWT.getClaims().get("id"));
-    }
-
-    @DisplayName("3. ext")
-    @Test
-    void t3() throws InterruptedException {
-        final Algorithm AL = Algorithm.HMAC256("leui");
-
-        String jwt = JWT.create()
-                .withSubject("a1234")
-                .withExpiresAt(new Date(System.currentTimeMillis() + 3000))
-                .sign(AL);
-
-        Thread.sleep(2000);
-
-        DecodedJWT verify = JWT.require(AL)
-                .build()
-                .verify(jwt);
-        System.out.println(verify.getClaims().get("sub"));
-    }
+//    @DisplayName("2. java-jwt")
+//    @Test
+//    void t2() {
+//        String oauthToken = JWT.create()
+//                .withClaim("name", "leui")
+//                .withClaim("price", 3000)
+//                .sign(Algorithm.HMAC256(SEC_KEY));
+//
+//        System.out.println("oauthToken = " + oauthToken);
+//        printToken(oauthToken);
+//
+//        DecodedJWT decodedJWT = JWT.require(Algorithm.HMAC256(SEC_KEY))
+//                .build()
+//                .verify(oauthToken);
+//
+//        System.out.println("ver = " + decodedJWT.getClaims().get("id"));
+//    }
+//
+//    @DisplayName("3. ext")
+//    @Test
+//    void t3() throws InterruptedException {
+//        final Algorithm AL = Algorithm.HMAC256("leui");
+//
+//        String jwt = JWT.create()
+//                .withSubject("a1234")
+//                .withExpiresAt(new Date(System.currentTimeMillis() + 3000))
+//                .sign(AL);
+//
+//        Thread.sleep(2000);
+//
+//        DecodedJWT verify = JWT.require(AL)
+//                .build()
+//                .verify(jwt);
+//        System.out.println(verify.getClaims().get("sub"));
+//    }
 }

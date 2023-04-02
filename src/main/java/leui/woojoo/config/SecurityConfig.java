@@ -51,8 +51,8 @@ public class SecurityConfig {
 //                .requestMatchers(PathRequest.toH2Console()).permitAll()
                 .requestMatchers("/api/auth/login").permitAll()
                 .requestMatchers("/api/auth/signup").permitAll()
-                .requestMatchers("/api/auth/sms").permitAll()
-                .requestMatchers("/api/auth/sms-auth").permitAll()
+                .requestMatchers("/api/sms").permitAll()
+                .requestMatchers("/api/sms-auth").permitAll()
                 .anyRequest().authenticated()
 
                 .and()
