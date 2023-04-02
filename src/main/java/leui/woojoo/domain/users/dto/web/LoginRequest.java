@@ -14,4 +14,7 @@ public class LoginRequest {
 
     @JsonProperty("fcm_token")
     private String fcmToken;
+
+    @JsonProperty("sms_code")
+    private String smsCode;
 }

@@ -3,7 +3,7 @@
 `Spring boot 3.0.3`, `spring security`, `QueryDsl 5.0.0`, `firebase 9.1.1`, `mariadb`, `jjwt:0.9.1`
 
 ### Firebase Setting
-**resources**
+**/resources**
 ```text
 Firebase Admin SDK `.json`파일 추가
 ```
@@ -22,3 +22,17 @@ jwt:
   password: {jwt secret key}
 ```
 
+### Image file path
+```text
+file:
+    path: {local file path}
+```
+
+### SMS Login
+application-sms.yml 파일추가
+```text
+sms:
+  serviceId: {serviceId}
+  accessKey: {accessKey}
+  secretKey: {secretKey}
+```

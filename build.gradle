@@ -39,6 +39,10 @@ dependencies {
 
     // firebase
     implementation group: 'com.google.firebase', name: 'firebase-admin', version: '9.1.1'
+
+    // sms
+    implementation 'org.apache.httpcomponents:httpclient'
+
 }
 
 tasks.named('test') {
