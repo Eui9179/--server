@@ -1,5 +1,6 @@
 package leui.woojoo.domain.sms;
 
+import leui.woojoo.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +24,8 @@ public class SmsService {
     }
 
     public boolean verify(String phoneNumber, String cp) {
-        Sms sms = smsRepository.findByPhoneNumber(phoneNumber);
+        Sms sms = smsRepository.findByPhoneNumber(phoneNumber)
+                .orElseThrow(() -> new DataNotFoundException("해당 유저가 없습니다."));
         return sms.getCp().equals(cp);
     }
 }

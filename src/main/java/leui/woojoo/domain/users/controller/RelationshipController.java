@@ -19,7 +19,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api")
 public class RelationshipController {
 
     private final RelationshipService relationshipService;

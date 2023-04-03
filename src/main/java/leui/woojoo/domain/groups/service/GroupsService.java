@@ -51,7 +51,7 @@ public class GroupsService {
                     .id(other.getId())
                     .name(other.getName())
                     .profileImageName(other.getProfileImageName())
-                    .intersection(gameIntersection)
+                    .games(gameIntersection)
                     .build();
 
             if (friendIdList.contains(other.getId())) {

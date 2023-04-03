@@ -49,6 +49,8 @@ public class AuthController {
         smsService.delete(requestDto.getPhone_number());
 
         String token = jwtProvider.createToken(users.getId());
+        log.info(token);
+        log.info(users.getId().toString());
         return new ResponseEntity<>(new SignupResponse(token), HttpStatus.OK);
     }
 

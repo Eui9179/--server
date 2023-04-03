@@ -26,7 +26,7 @@ public class gameController {
         return new MyGameResponse(gamesService.findGamesByUserId(userId));
     }
 
-    @PostMapping("/me")
+    @PostMapping
     public MyGameResponse updateMyGames(@AuthenticationPrincipal User user, @RequestBody List<String> gameList) {
         Long userId = UserUtils.resolveUserId(user);
         return new MyGameResponse(gamesService.updateGameList(userId, gameList));

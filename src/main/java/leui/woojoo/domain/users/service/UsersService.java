@@ -103,7 +103,7 @@ public class UsersService {
                     .id(otherFriend.getId())
                     .name(otherFriend.getName())
                     .profileImageName(otherFriend.getProfileImageName())
-                    .intersection(intersection)
+                    .games(intersection)
                     .build();
             if (myFriendIds.contains(friendId)) {
                 alreadyFriends.add(userInList);

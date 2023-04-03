@@ -21,6 +21,7 @@ public class TodayGamesController {
     @PreAuthorize("isAuthenticated()")
     @GetMapping
     public TodayGamesResponse getTodayGames(Principal principal) {
+        // TODO 내친구들것만
         Long userId = UserUtils.resolveUserId(principal);
         return new TodayGamesResponse(todayGamesService.findAllByToday(userId));
     }

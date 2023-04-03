@@ -19,13 +19,13 @@ public class UserInList implements Comparable<UserInList> {
     private Long id;
     private String name;
     private String profileImageName;
-    private List<String> intersection;
+    private List<String> games;
 
     public UserInList(Users user) {
         this.id = user.getId();
         this.name = user.getName();
         this.profileImageName = user.getProfileImageName();
-        this.intersection = user.getGames()
+        this.games = user.getGames()
                 .stream()
                 .map(Games::getGame)
                 .toList();

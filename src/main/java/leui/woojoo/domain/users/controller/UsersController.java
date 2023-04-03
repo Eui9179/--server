@@ -20,7 +20,7 @@ import java.io.IOException;
 @Slf4j
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/profile")
+@RequestMapping("/api/users")
 public class UsersController {
 
     private final UsersService usersService;
