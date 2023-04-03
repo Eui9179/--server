@@ -46,7 +46,7 @@ public class Users extends BaseTimeEntity {
     @OneToMany(mappedBy = "users", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<Games> games = new ArrayList<>();
 
-    @OneToOne(mappedBy = "users", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "users", cascade = CascadeType.REMOVE)
     private Groups groups;
 
     public void asyncFcmToken(String fcmToken) {

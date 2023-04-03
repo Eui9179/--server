@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import leui.woojoo.domain.games.entity.Games;
 import leui.woojoo.domain.today_games.entity.TodayGames;
+import leui.woojoo.domain.today_games.entity.TodayGamesData;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,9 @@ public class TodayGameDetail {
     public static TodayGameDetail of(TodayGames entity, Long userId) {
         return new TodayGameDetail(entity, userId);
     }
+    public static TodayGameDetail of(TodayGamesData entity, Long userId) {
+        return new TodayGameDetail(entity, userId);
+    }
     public TodayGameDetail(TodayGames entity, Long userId) {
         this.todaysGameId = entity.getId();
         this.id = entity.getUsers().getId();
@@ -44,5 +48,24 @@ public class TodayGameDetail {
                 break;
             }
         }
+    }
+
+    public TodayGameDetail(TodayGamesData entity, Long userId) {
+        this.todaysGameId = entity.getTodaysGameId();
+        this.id = entity.getId();
+        this.name = entity.getName();
+        this.profileImageName = entity.getProfileImageName();
+        this.game = entity.getGame();
+        this.introduction = entity.getIntroduction();
+        this.createTime = entity.getCreateTime().toString();
+        this.isme = userId.equals(entity.getId());
+        this.gameNickname = entity.getGameNickname();
+
+//        for (Games games : entity.getUsers().getGames()) {
+//            if (games.getGame().equals(this.game)) {
+//                this.gameNickname = games.getNickname();
+//                break;
+//            }
+//        }
     }
 }

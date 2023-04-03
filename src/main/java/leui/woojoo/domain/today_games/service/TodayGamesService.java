@@ -5,6 +5,7 @@ import com.google.firebase.messaging.FirebaseMessagingException;
 import leui.woojoo.domain.today_games.entity.TodayGames;
 import leui.woojoo.domain.today_games.dto.CreateTodayGameRequest;
 import leui.woojoo.domain.today_games.dto.TodayGameDetail;
+import leui.woojoo.domain.today_games.entity.TodayGamesData;
 import leui.woojoo.domain.today_games.entity.TodayGamesRepository;
 import leui.woojoo.domain.users.entity.Users;
 import leui.woojoo.domain.users.service.UsersService;
@@ -29,7 +30,7 @@ public class TodayGamesService {
     public List<TodayGameDetail> findAllByToday(Long userId) {
         LocalDateTime today = LocalDate.now().atStartOfDay();
         LocalDateTime tomorrow = LocalDateTime.now().plusDays(1);
-        List<TodayGames> todayGamesList = todayGamesRepository.findAllByCreatedDateBetweenOrderByIdDesc(today, tomorrow);
+        List<TodayGamesData> todayGamesList = todayGamesRepository.findTodayGames(userId, today, tomorrow);
         return todayGamesList
                 .stream()
                 .map(todayGame -> TodayGameDetail.of(todayGame, userId))

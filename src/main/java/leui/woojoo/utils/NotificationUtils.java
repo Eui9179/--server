@@ -25,13 +25,17 @@ public class NotificationUtils implements Runnable{
                 .setBody(body)
                 .setImage(null)
                 .build();
+        List<String> newFcmList = fcmTokenList.stream()
+                .filter(fcm -> (fcm != null && !fcm.equals("")))
+                .toList();
 
-        MulticastMessage message = MulticastMessage.builder()
-                .setNotification(notification)
-                .addAllTokens(fcmTokenList)
-                .build();
-
-        sendMulticastMessage(message);
+        if (newFcmList.size() > 0) {
+            MulticastMessage message = MulticastMessage.builder()
+                    .setNotification(notification)
+                    .addAllTokens(newFcmList)
+                    .build();
+            sendMulticastMessage(message);
+        }
     }
 
     public String sendMessage(Message message) throws FirebaseMessagingException {
