@@ -8,6 +8,7 @@ import leui.woojoo.domain.users.service.UsersService;
 import leui.woojoo.utils.FileUtils;
 import leui.woojoo.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
+@Slf4j
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/profile")
@@ -26,6 +28,7 @@ public class UsersController {
 
     @GetMapping("/me")
     public UserDetail getMyProfile(@AuthenticationPrincipal User user) {
+        log.info("getMyProfile id = {}", UserUtils.resolveUserId(user));
         return usersService.findUserDetailById(UserUtils.resolveUserId(user));
     }
 

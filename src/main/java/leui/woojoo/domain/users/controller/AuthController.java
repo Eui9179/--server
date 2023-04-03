@@ -1,5 +1,6 @@
 package leui.woojoo.domain.users.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import leui.woojoo.domain.sms.SmsService;
 import leui.woojoo.domain.users.dto.web.*;
@@ -52,8 +53,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(HttpServletRequest request,
-                                               @RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
 
         String phoneNumber = loginRequest.getPhoneNumber();
         UserDetail users = authService.findByPhoneNumber(phoneNumber);

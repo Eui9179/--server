@@ -53,6 +53,12 @@ public class SecurityConfig {
                 .requestMatchers("/api/auth/signup").permitAll()
                 .requestMatchers("/api/sms").permitAll()
                 .requestMatchers("/api/sms-auth").permitAll()
+
+                .requestMatchers("/v3/api-docs/**").permitAll()
+                .requestMatchers("/swagger-ui/index.html").permitAll()
+                .requestMatchers("/swagger-ui/**").permitAll()
+                .requestMatchers("/docs").permitAll()
+
                 .anyRequest().authenticated()
 
                 .and()

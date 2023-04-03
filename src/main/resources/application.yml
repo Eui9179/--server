@@ -26,3 +26,8 @@ jwt:
 project:
   properties:
     firebase-create-scoped: "https://www.googleapis.com/auth/firebase.messaging"
+
+springdoc:
+  swagger-ui:
+    path: /docs
+    use-root-path: true
