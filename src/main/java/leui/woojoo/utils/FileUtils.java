@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -30,7 +29,7 @@ public class FileUtils {
         long timeStamp = new Timestamp(nowDate).getTime();
         String ext = file.getOriginalFilename().split("\\.")[1];
 
-        File newFileName = new File( imagePath + "/" + kind + "/"
+        File newFileName = new File( imagePath + kind + "/"
                 + timeStamp + "_" + kind + "." + ext);
 
         log.info(newFileName.getName());
@@ -39,8 +38,8 @@ public class FileUtils {
         return newFileName.getName();
     }
 
-    public Resource download(String fileName) throws IOException {
-        Path path = Paths.get(imagePath + fileName);
+    public Resource download(String fileName, String kind) throws IOException {
+        Path path = Paths.get(imagePath + kind + "/" + fileName);
         return new InputStreamResource(Files.newInputStream(path));
     }
 

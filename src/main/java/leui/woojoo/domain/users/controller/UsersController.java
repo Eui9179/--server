@@ -9,7 +9,9 @@ import leui.woojoo.utils.FileUtils;
 import leui.woojoo.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
@@ -28,7 +30,6 @@ public class UsersController {
 
     @GetMapping("/me")
     public UserDetail getMyProfile(@AuthenticationPrincipal User user) {
-        log.info("getMyProfile id = {}", UserUtils.resolveUserId(user));
         return usersService.findUserDetailById(UserUtils.resolveUserId(user));
     }
 
@@ -75,4 +76,8 @@ public class UsersController {
         return new ResponseEntity<>(profileImageName, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/profile/image/{filename}", produces = MediaType.IMAGE_JPEG_VALUE)
+    public Resource getUserProfileImage(@PathVariable String filename) throws IOException {
+        return fileUtils.download(filename, "profile");
+    }
 }
