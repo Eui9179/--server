@@ -3,7 +3,7 @@
 ## 🚀 프로젝트 요약
 
 <p align="center" width="100%">
-    <img width="200" alt="login" src="https://user-images.githubusercontent.com/83222282/229735677-d103846c-6e10-4258-b17f-9952f63eef85.png">
+    <img width="1283" alt="Frame 322(1)" src="https://user-images.githubusercontent.com/83222282/229736196-9d1d9899-3893-44b3-ad51-b04cb3c04e50.png">
 </p>
 
 
