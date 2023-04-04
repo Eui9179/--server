@@ -1,10 +1,9 @@
 package leui.woojoo.domain.sms;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import leui.woojoo.domain.users.dto.web.CpRequest;
 import leui.woojoo.domain.users.dto.web.PhoneNumberRequest;
+import leui.woojoo.domain.users.dto.web.SmsResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -30,14 +29,13 @@ public class SmsController {
     private final SmsService smsService;
 
     @PostMapping("/sms")
-    public String sendSms(@RequestBody PhoneNumberRequest phoneNumber) throws UnsupportedEncodingException, NoSuchAlgorithmException, URISyntaxException, InvalidKeyException, JsonProcessingException {
+    public SmsResponse sendSms(@RequestBody PhoneNumberRequest phoneNumber) throws UnsupportedEncodingException, NoSuchAlgorithmException, URISyntaxException, InvalidKeyException, JsonProcessingException {
         String cp = String.valueOf(ThreadLocalRandom.current().nextInt(100000, 1000000));
         log.info("cp = {}", cp);
         log.info("phoneNumber = {}", phoneNumber.getPhoneNumber());
         smsService.save(phoneNumber.getPhoneNumber(), cp);
 
-//        return smsUtils.sendSms(phoneNumber.getPhoneNumber(), cp);
-        return "ok";
+        return smsUtils.sendSms(phoneNumber.getPhoneNumber(), smsUtils.genCpText(cp));
     }
 
     @PostMapping("/sms-auth")

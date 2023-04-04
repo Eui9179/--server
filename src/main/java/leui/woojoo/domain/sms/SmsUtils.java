@@ -92,4 +92,8 @@ public class SmsUtils {
 
         return Base64.encodeBase64String(rawHmac);
     }
+
+    public String genCpText(String cp) {
+        return "[우리주변게임친구]\n본인확인 인증번호는 [" + cp + "]입니다.";
+    }
 }

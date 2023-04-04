@@ -5,13 +5,21 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Service
 public class SmsService {
 
     private final SmsRepository smsRepository;
 
+    @Transactional
     public void save(String phoneNumber, String cp) {
+        Optional<Sms> oSmsAuthInfo = smsRepository.findByPhoneNumber(phoneNumber);
+        if (oSmsAuthInfo.isPresent()) {
+            oSmsAuthInfo.get().updateCp(cp);
+            return;
+        }
         smsRepository.save(Sms.builder()
                 .phoneNumber(phoneNumber)
                 .cp(cp)

@@ -21,4 +21,8 @@ public class Sms {
 
     @Column(length = 10)
     private String cp;
+
+    public void updateCp(String cp) {
+        this.cp = cp;
+    }
 }
