@@ -1,6 +1,10 @@
-우리주변게임친구 서버
+## 우리주변게임친구 서버
+
 ---
-`Spring boot 3.0.3`, `spring security`, `QueryDsl 5.0.0`, `firebase 9.1.1`, `mariadb`, `jjwt:0.9.1`
+
+**작업기간**: 2022.7 ~ 2022.11
+
+`Spring boot 3.0.3`, `QueryDsl 5.0.0`, `firebase 9.1.1`
 
 ---
 ### Swagger path
@@ -46,3 +50,5 @@ sms:
   secretKey: {secretKey}
   sms.caller = {phone number}
 ```
+
+---

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-@Entity
+@Entity(name = "user_groups")
 public class Groups {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

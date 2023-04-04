@@ -44,7 +44,7 @@ public class Users extends BaseTimeEntity {
     Set<Users> blocklist;
 
     @OneToMany(mappedBy = "users", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-    private List<Games> games = new ArrayList<>();
+    private List<Games> games;
 
     @OneToOne(mappedBy = "users", cascade = CascadeType.REMOVE)
     private Groups groups;
