@@ -2,7 +2,10 @@
 
 ## 🚀 프로젝트 요약
 
-![woojoo-back](https://user-images.githubusercontent.com/83222282/229728534-f4b80e67-d995-4058-871e-249d9468a2c0.png)
+<p align="center" width="100%">
+    <img width="347" alt="login" src="https://user-images.githubusercontent.com/83222282/229735677-d103846c-6e10-4258-b17f-9952f63eef85.png">
+</p>
+
 
 📋 학교를 등록하고 학교 친구들과 오늘 할 게임을 공유하는 애플리케이션입니다.<br>
 서로 팔로우하고 팔로우를 하면 친구가 하는 게임과 닉네임을 쉽게 알 수 있고 오늘 무슨 게임을 할지<br>‘오늘의 게임’을 통해 쉽게 알 수 있게 도와줍니다.
