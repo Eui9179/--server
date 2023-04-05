@@ -13,6 +13,7 @@ import leui.woojoo.utils.NotificationUtils;
 import leui.woojoo.utils.ToKor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -37,6 +38,7 @@ public class TodayGamesService {
                 .toList();
     }
 
+    @Transactional
     public void save(Long userId, CreateTodayGameRequest todayGame) throws FirebaseMessagingException {
         Users user = usersService.findById(userId);
         TodayGames entity = TodayGames.builder()

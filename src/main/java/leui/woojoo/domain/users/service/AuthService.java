@@ -4,10 +4,13 @@ import leui.woojoo.domain.users.entity.Users;
 import leui.woojoo.domain.users.entity.UsersRepository;
 import leui.woojoo.domain.users.dto.UserDetail;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
 @RequiredArgsConstructor
+@Slf4j
 @Service
 @Transactional
 public class AuthService {
@@ -38,8 +41,10 @@ public class AuthService {
     }
 
     public String deleteUser(Long userId) {
-        Users entity = usersRepository.findById(userId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 유저가 없습니다. " + userId));
+        Users entity = usersRepository.findById(userId).orElse(null);
+        if (entity == null) {
+            return null;
+        }
         usersRepository.delete(entity);
         return entity.getProfileImageName();
     }

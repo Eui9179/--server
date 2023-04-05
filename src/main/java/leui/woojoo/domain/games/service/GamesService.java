@@ -3,11 +3,11 @@ package leui.woojoo.domain.games.service;
 import leui.woojoo.DataNotFoundException;
 import leui.woojoo.domain.games.entity.Games;
 import leui.woojoo.domain.games.dto.Game;
-import leui.woojoo.domain.games.entity.GamesQueryRepository;
 import leui.woojoo.domain.games.entity.GamesRepository;
 import leui.woojoo.domain.users.entity.Users;
 import leui.woojoo.domain.users.service.UsersService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +18,6 @@ import java.util.List;
 @Service
 public class GamesService {
     private final GamesRepository gamesRepository;
-    private final GamesQueryRepository gamesQueryRepository;
     private final UsersService usersService;
 
     public List<Game> findGamesByUserId(Long userId) {
@@ -82,6 +81,7 @@ public class GamesService {
         gameEntity.updateGameNickname(nickname);
     }
 
+    @Transactional
     public void create(Users user, String game, String nickname) {
         Games gameEntity = Games.builder()
                 .game(game)
@@ -91,11 +91,13 @@ public class GamesService {
         gamesRepository.save(gameEntity);
     }
 
+    @Transactional
     public void addAll(Users user, List<Games> gameList) {
         user.addGameList(gameList);
         gamesRepository.saveAll(gameList);
     }
 
+    @Transactional
     public void deleteAll(Users user, List<Games> gameList) {
         user.deleteGameList(gameList);
         gamesRepository.deleteAll(gameList);

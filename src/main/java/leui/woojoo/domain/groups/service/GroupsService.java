@@ -10,6 +10,7 @@ import leui.woojoo.domain.users.service.UsersService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -30,6 +31,7 @@ public class GroupsService {
                 groupsRepository.findAllByGroupNameAndDetail1(groupName, detail1);
     }
 
+    @Transactional(readOnly = true)
     public Map<String, List<UserInList>> findUsersByGroup(Long userId, String groupName, String groupDetail) {
         Users userEntity = usersService.findById(userId);
         List<Games> games = userEntity.getGames();

@@ -77,7 +77,9 @@ public class AuthController {
     @ResponseStatus(HttpStatus.OK)
     public String withdrawUser(@AuthenticationPrincipal User user) {
         String profileImageName = authService.deleteUser(Long.parseLong(user.getUsername()));
-        fileUtils.delete(profileImageName, "profile");
+        if (profileImageName != null) {
+            fileUtils.delete(profileImageName, "profile");
+        }
         return "ok";
     }
 

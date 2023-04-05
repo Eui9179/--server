@@ -46,6 +46,7 @@ public class UsersService {
                 .orElseThrow(() -> new DataNotFoundException("해당 유저가 없습니다. " + userId));
     }
 
+    @Transactional(readOnly = true)
     public GroupSimple findUserGroupsByUserId(Long userId) {
         Users users = usersRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 유저가 없습니다. " + userId));
@@ -76,6 +77,7 @@ public class UsersService {
         return true;
     }
 
+    @Transactional(readOnly = true)
     public UserProfileResponse findUserProfileByUserIdAndOtherId(Long userId, Long otherId) {
         Users me = findById(userId);
         List<Long> myFriendIds = findMyFriendIdAllById(me.getId());
@@ -86,15 +88,13 @@ public class UsersService {
         Users other = findById(otherId);
         GroupSimple otherGroup = new GroupSimple(other.getGroups());
         List<Game> otherGames = findUserGames(other);
-        List<Long> otherFriends = findMyFriendIdAllById(other.getId());
+        Set<Users> otherFriends = other.getFriends();
 
         ArrayList<UserInList> alreadyFriends = new ArrayList<>();
         ArrayList<UserInList> userFriends = new ArrayList<>();
 
-        for (Long friendId : otherFriends) {
-            if (userId.equals(friendId)) continue;
-
-            Users otherFriend = findById(friendId);
+        for (Users otherFriend : otherFriends) {
+            if (userId.equals(otherFriend.getId())) continue;
 
             List<Games> userFriendGames = otherFriend.getGames();
             List<String> intersection = GameUtils.getGameIntersection(myGames, userFriendGames);
@@ -105,7 +105,7 @@ public class UsersService {
                     .profileImageName(otherFriend.getProfileImageName())
                     .games(intersection)
                     .build();
-            if (myFriendIds.contains(friendId)) {
+            if (myFriendIds.contains(otherFriend.getId())) {
                 alreadyFriends.add(userInList);
             } else {
                 userFriends.add(userInList);
