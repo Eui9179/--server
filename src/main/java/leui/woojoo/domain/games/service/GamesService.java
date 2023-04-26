@@ -80,16 +80,6 @@ public class GamesService {
         gameEntity.updateGameNickname(nickname);
     }
 
-    @Transactional
-    public void create(Users user, String game, String nickname) {
-        Games gameEntity = Games.builder()
-                .game(game)
-                .nickname(nickname)
-                .build();
-        user.addGames(gameEntity);
-        gamesRepository.save(gameEntity);
-    }
-
     public void addAll(Users user, List<Games> gameList) {
         user.addGameList(gameList);
         gamesRepository.saveAll(gameList);

@@ -1,5 +1,6 @@
 package leui.woojoo.domain.users.service;
 
+import leui.woojoo.DataNotFoundException;
 import leui.woojoo.domain.users.entity.Users;
 import leui.woojoo.domain.users.entity.UsersRepository;
 import leui.woojoo.domain.users.dto.UserDetail;
@@ -7,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 
 @RequiredArgsConstructor
@@ -40,12 +43,14 @@ public class AuthService {
         users.asyncFcmToken(fcmToken);
     }
 
+    @Transactional
     public String deleteUser(Long userId) {
-        Users entity = usersRepository.findById(userId).orElse(null);
-        if (entity == null) {
-            return null;
-        }
-        usersRepository.delete(entity);
-        return entity.getProfileImageName();
+        Users user = usersRepository.findById(userId)
+                .orElseThrow(() -> new DataNotFoundException("유저가 없습니다."));
+
+        user.clearRelationship();
+        usersRepository.delete(user);
+
+        return user.getProfileImageName();
     }
 }

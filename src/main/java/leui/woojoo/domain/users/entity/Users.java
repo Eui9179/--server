@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -37,14 +38,14 @@ public class Users extends BaseTimeEntity {
     @Column(length = 200)
     private String fcmToken;
 
-    @ManyToMany
-    Set<Users> friends;
+    @ManyToMany(cascade = CascadeType.REMOVE)
+    Set<Users> friends = new HashSet<>();
 
-    @ManyToMany
-    Set<Users> blocklist;
+    @ManyToMany(cascade = CascadeType.REMOVE)
+    Set<Users> blocklist = new HashSet<>();
 
     @OneToMany(mappedBy = "users", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-    private List<Games> games;
+    private List<Games> games = new ArrayList<>();
 
     @OneToOne(mappedBy = "users", cascade = CascadeType.REMOVE)
     private Groups groups;
@@ -93,4 +94,12 @@ public class Users extends BaseTimeEntity {
     public void addFriend(Users friend) {
         this.friends.add(friend);
     }
+
+    public void clearRelationship() {
+        for (Users friend : this.getFriends()) {
+            friend.getFriends().remove(this);
+        }
+        this.getFriends().clear();
+    }
+
 }
