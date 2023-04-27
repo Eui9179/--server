@@ -1,4 +1,4 @@
-package leui.woojoo.web.controller.users;
+package leui.woojoo.domain.users;
 
 import leui.woojoo.DataNotFoundException;
 import leui.woojoo.domain.groups.entity.GroupsRepository;

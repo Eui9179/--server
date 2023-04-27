@@ -32,7 +32,6 @@ public class SmsController {
     public SmsResponse sendSms(@RequestBody PhoneNumberRequest phoneNumber) throws UnsupportedEncodingException, NoSuchAlgorithmException, URISyntaxException, InvalidKeyException, JsonProcessingException {
         String cp = String.valueOf(ThreadLocalRandom.current().nextInt(100000, 1000000));
         log.info("cp = {}", cp);
-        log.info("phoneNumber = {}", phoneNumber.getPhoneNumber());
         smsService.save(phoneNumber.getPhoneNumber(), cp);
 
         return smsUtils.sendSms(phoneNumber.getPhoneNumber(), smsUtils.genCpText(cp));
@@ -40,13 +39,10 @@ public class SmsController {
 
     @PostMapping("/sms-auth")
     public ResponseEntity<String> authenticateSms(@RequestBody CpRequest cpRequest) {
-        log.info("phoneNumber = {}", cpRequest.getPhoneNumber());
         log.info("cpInRequest = {}", cpRequest.getCp());
         if (smsService.verify(cpRequest.getPhoneNumber(), cpRequest.getCp())) {
-            log.info("cp success? -> yes");
             return new ResponseEntity<>(HttpStatus.OK);
         }
-        log.info("cp success? -> no");
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 }

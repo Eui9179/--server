@@ -1,5 +1,6 @@
 package leui.woojoo.base;
 
+import leui.woojoo.domain.sms.SmsService;
 import leui.woojoo.domain.users.entity.Users;
 import leui.woojoo.domain.users.service.AuthService;
 import org.springframework.boot.CommandLineRunner;
@@ -12,7 +13,8 @@ import org.springframework.context.annotation.Profile;
 public class Init {
     @Bean
     CommandLineRunner initData(
-            AuthService authService
+            AuthService authService,
+            SmsService smsService
     ) {
         return args -> {
             Users users = Users.builder()
