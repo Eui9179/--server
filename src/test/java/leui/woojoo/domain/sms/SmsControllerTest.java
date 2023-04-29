@@ -37,8 +37,8 @@ class SmsControllerTest {
     private SmsRepository smsRepository;
 
     @Test
-    @DisplayName("인증문자 보내기")
-    void 인증문자를_보내다() throws Exception {
+    @DisplayName("인증문자 보내기 테스트")
+    void t001() throws Exception {
         //given
         String phoneNumber = "1111";
 
@@ -64,7 +64,8 @@ class SmsControllerTest {
     }
 
     @Test
-    void authenticateSms() throws Exception {
+    @DisplayName("문자 인증 테스트")
+    void t002() throws Exception {
         //given
         String phoneNumber = "1111";
         String cp = String.valueOf(ThreadLocalRandom.current().nextInt(100000, 1000000));

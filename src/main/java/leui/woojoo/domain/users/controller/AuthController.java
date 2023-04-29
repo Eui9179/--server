@@ -59,15 +59,16 @@ public class AuthController {
             return new ResponseEntity<>(new LoginResponse(), HttpStatus.UNAUTHORIZED);
         }
 
-        if (!users.getFcmToken().equals(loginRequest.getFcmToken())) {
-            authService.updateFcmToken(users.getId(), loginRequest.getFcmToken());
-        }
-
-        String token = jwtProvider.createToken(users.getId());
         if (!smsService.verify(phoneNumber, loginRequest.getSmsCode())) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
         smsService.delete(phoneNumber);
+
+        String token = jwtProvider.createToken(users.getId());
+
+        if (!users.getFcmToken().equals(loginRequest.getFcmToken())) {
+            authService.updateFcmToken(users.getId(), loginRequest.getFcmToken());
+        }
         return new ResponseEntity<>(new LoginResponse(token), HttpStatus.OK);
     }
 
