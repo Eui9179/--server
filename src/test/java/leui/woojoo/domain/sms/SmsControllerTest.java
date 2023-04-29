@@ -14,12 +14,13 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+import java.util.concurrent.ThreadLocalRandom;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.http.ResponseEntity.status;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.handler;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -63,6 +64,31 @@ class SmsControllerTest {
     }
 
     @Test
-    void authenticateSms() {
+    void authenticateSms() throws Exception {
+        //given
+        String phoneNumber = "1111";
+        String cp = String.valueOf(ThreadLocalRandom.current().nextInt(100000, 1000000));
+        smsService.save(phoneNumber, cp);
+
+        //when
+        String jsonData = String.format(
+                """
+                {
+                    "phone_number": %s,
+                    "cp": %s
+                }
+                """, phoneNumber, cp);
+
+        ResultActions resultActions = mvc
+                .perform(MockMvcRequestBuilders.post("/api/sms-auth")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(jsonData));
+
+        //then
+        resultActions
+                .andExpect(handler().handlerType(SmsController.class))
+                .andExpect(handler().methodName("authenticateSms"))
+                .andExpect(status().is2xxSuccessful());
+
     }
 }
