@@ -1,6 +1,8 @@
 package leui.woojoo.base;
 
+import leui.woojoo.domain.sms.Sms;
 import leui.woojoo.domain.sms.SmsService;
+import leui.woojoo.domain.users.dto.web.PhoneNumberRequest;
 import leui.woojoo.domain.users.entity.Users;
 import leui.woojoo.domain.users.service.AuthService;
 import org.springframework.boot.CommandLineRunner;
@@ -24,6 +26,8 @@ public class Init {
                     .fcmToken("1234")
                     .build();
             authService.save(users);
+
+            smsService.save("1111", "000000");
         };
     }
 }

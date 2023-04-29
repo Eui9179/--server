@@ -1,5 +1,7 @@
 package leui.woojoo.domain.sms;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import leui.woojoo.domain.users.dto.web.CpRequest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +42,7 @@ class SmsControllerTest {
     @DisplayName("인증문자 보내기 테스트")
     void t001() throws Exception {
         //given
-        String phoneNumber = "1111";
+        String phoneNumber = "2222";
 
         String requestJson = "{\"phone_number\":\"" + phoneNumber + "\"}";
 
@@ -67,23 +69,22 @@ class SmsControllerTest {
     @DisplayName("문자 인증 테스트")
     void t002() throws Exception {
         //given
-        String phoneNumber = "1111";
+        String phoneNumber = "2222";
         String cp = String.valueOf(ThreadLocalRandom.current().nextInt(100000, 1000000));
         smsService.save(phoneNumber, cp);
 
         //when
-        String jsonData = String.format(
-                """
-                {
-                    "phone_number": %s,
-                    "cp": %s
-                }
-                """, phoneNumber, cp);
+        CpRequest cpRequest = CpRequest
+                .builder()
+                .phoneNumber(phoneNumber)
+                .cp(cp)
+                .build();
+        String json = new ObjectMapper().writeValueAsString(cpRequest);
 
         ResultActions resultActions = mvc
                 .perform(MockMvcRequestBuilders.post("/api/sms-auth")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(jsonData));
+                        .content(json));
 
         //then
         resultActions

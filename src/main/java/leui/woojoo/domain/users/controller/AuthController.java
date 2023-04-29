@@ -63,9 +63,9 @@ public class AuthController {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
         smsService.delete(phoneNumber);
-
+        
         String token = jwtProvider.createToken(users.getId());
-
+        
         if (!users.getFcmToken().equals(loginRequest.getFcmToken())) {
             authService.updateFcmToken(users.getId(), loginRequest.getFcmToken());
         }
