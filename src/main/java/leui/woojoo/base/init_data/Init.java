@@ -1,8 +1,6 @@
-package leui.woojoo.base;
+package leui.woojoo.base.init_data;
 
-import leui.woojoo.domain.sms.Sms;
 import leui.woojoo.domain.sms.SmsService;
-import leui.woojoo.domain.users.dto.web.PhoneNumberRequest;
 import leui.woojoo.domain.users.entity.Users;
 import leui.woojoo.domain.users.service.AuthService;
 import org.springframework.boot.CommandLineRunner;

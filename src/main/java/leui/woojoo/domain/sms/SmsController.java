@@ -24,17 +24,12 @@ import java.util.concurrent.ThreadLocalRandom;
 @RestController
 @RequestMapping("/api")
 public class SmsController {
-
-    private final SmsUtils smsUtils;
     private final SmsService smsService;
 
     @PostMapping("/sms")
-    public SmsResponse sendSms(@RequestBody PhoneNumberRequest phoneNumber) throws UnsupportedEncodingException, NoSuchAlgorithmException, URISyntaxException, InvalidKeyException, JsonProcessingException {
-        String cp = String.valueOf(ThreadLocalRandom.current().nextInt(100000, 1000000));
-        log.info("cp = {}", cp);
-        smsService.save(phoneNumber.getPhoneNumber(), cp);
-
-        return smsUtils.sendSms(phoneNumber.getPhoneNumber(), smsUtils.genCpText(cp));
+    public String sendSms(@RequestBody PhoneNumberRequest phoneNumber) throws UnsupportedEncodingException, NoSuchAlgorithmException, URISyntaxException, InvalidKeyException, JsonProcessingException {
+        smsService.send(phoneNumber.getPhoneNumber());
+        return "ok";
     }
 
     @PostMapping("/sms-auth")
