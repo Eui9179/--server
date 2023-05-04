@@ -2,14 +2,13 @@ package leui.woojoo.bounded_context.games.entity;
 
 import jakarta.persistence.*;
 import leui.woojoo.bounded_context.users.entity.Users;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 public class Games implements Comparable<Games>{
     @Id
@@ -24,12 +23,6 @@ public class Games implements Comparable<Games>{
 
     @Column(length = 30)
     private String nickname;
-
-    @Builder
-    public Games(String game, String nickname) {
-        this.game = game;
-        this.nickname = nickname;
-    }
 
     public void updateGameNickname(String gameNickname) {
         this.nickname = gameNickname;

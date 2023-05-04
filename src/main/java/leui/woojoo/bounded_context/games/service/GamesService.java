@@ -45,6 +45,7 @@ public class GamesService {
         for (String game : gameList) {
             if (!myGameNames.contains(game)) {
                 Games games = Games.builder()
+                        .users(user)
                         .game(game)
                         .nickname(null)
                         .build();

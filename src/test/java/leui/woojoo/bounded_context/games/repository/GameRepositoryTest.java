@@ -1,4 +1,4 @@
-package leui.woojoo.bounded_context.games;
+package leui.woojoo.bounded_context.games.repository;
 
 import leui.woojoo.bounded_context.games.entity.Games;
 import leui.woojoo.bounded_context.games.entity.GamesRepository;
@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class UserDetailGameRepositoryTest {
+public class GameRepositoryTest {
 
     @Autowired
     private GamesRepository gamesRepository;
@@ -20,34 +20,29 @@ public class UserDetailGameRepositoryTest {
     @Autowired
     private UsersRepository usersRepository;
 
-    @AfterEach
-    void cleanUp() {
-        gamesRepository.deleteAll();
-    }
-
     @Test
     @DisplayName("게임 저장 테스트")
     void t001() {
         //given
-        Users userEntity = usersRepository.save(Users.builder()
+        Users user = usersRepository.save(Users.builder()
                 .name("test")
-                .phoneNumber("+1026649179")
+                .phoneNumber("+2222")
                 .profileImageName("default.png")
                 .fcmToken("1234")
                 .build());
 
+        //when
         String gameName = "leagueoflegneds";
         String gameNickname = "Lee";
-
-        //when
-        Games gamesEntity = gamesRepository.save(Games.builder()
+        Games games = gamesRepository.save(Games.builder()
+                .users(user)
                 .game(gameName)
                 .nickname(gameNickname)
                 .build());
 
         //then
-        Assertions.assertThat(gamesEntity.getUsers().getId()).isEqualTo(userEntity.getId());
-        Assertions.assertThat(gamesEntity.getGame()).isEqualTo(gameName);
+        Assertions.assertThat(games.getUsers().getId()).isEqualTo(user.getId());
+        Assertions.assertThat(games.getGame()).isEqualTo(gameName);
     }
 
 }
