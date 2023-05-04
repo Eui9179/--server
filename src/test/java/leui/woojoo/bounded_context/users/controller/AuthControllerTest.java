@@ -1,4 +1,4 @@
-package leui.woojoo.bounded_context.users;
+package leui.woojoo.bounded_context.users.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import leui.woojoo.DataNotFoundException;

@@ -1,4 +1,4 @@
-package leui.woojoo.bounded_context.users;
+package leui.woojoo.bounded_context.users.repository;
 
 import leui.woojoo.bounded_context.users.entity.Users;
 import leui.woojoo.bounded_context.users.entity.UsersRepository;
@@ -12,7 +12,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-public class UserDetailRepositoryTest {
+public class UsersRepositoryTest {
 
     @Autowired
     private UsersRepository usersRepository;
