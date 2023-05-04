@@ -24,9 +24,9 @@ import java.security.NoSuchAlgorithmException;
 public class SmsController {
     private final SmsService smsService;
 
-    @PostMapping("/sms")
+    @PostMapping("/sms-code")
     public String sendSms(@RequestBody PhoneNumberRequest phoneNumber) throws UnsupportedEncodingException, NoSuchAlgorithmException, URISyntaxException, InvalidKeyException, JsonProcessingException {
-        smsService.send(phoneNumber.getPhoneNumber());
+        smsService.sendAuthCode(phoneNumber.getPhoneNumber());
         return "ok";
     }
 

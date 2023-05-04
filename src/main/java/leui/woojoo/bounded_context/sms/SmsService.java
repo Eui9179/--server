@@ -46,10 +46,10 @@ public class SmsService {
     private final SmsRepository smsRepository;
     private final ApplicationEventPublisher publisher;
 
-    public void send(String phoneNumber) {
+    public void sendAuthCode(String phoneNumber) {
         String cp = String.valueOf(ThreadLocalRandom.current().nextInt(100000, 1000000));
         save(phoneNumber, cp);
-        publisher.publishEvent(new EventSendSms(this, phoneNumber, cp));
+        publisher.publishEvent(new EventSendSms(this, phoneNumber, genCpText(cp)));
     }
 
     @Transactional
@@ -77,10 +77,10 @@ public class SmsService {
     }
 
 
-    public void sendSms(String phoneNumber, String cp) throws JsonProcessingException, UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException, URISyntaxException {
+    public void sendSms(String phoneNumber, String content) throws JsonProcessingException, UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException, URISyntaxException {
         Long time = System.currentTimeMillis();
         List<Messages> messages = new ArrayList<>();
-        messages.add(new Messages(phoneNumber, genCpText(cp)));
+        messages.add(new Messages(phoneNumber, genCpText(content)));
 
         SmsRequest smsRequest = new SmsRequest("SMS", "COMM", "82", caller, "내용", messages);
         ObjectMapper objectMapper = new ObjectMapper();
