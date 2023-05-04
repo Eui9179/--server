@@ -1,12 +1,15 @@
 package leui.woojoo.base.init_data;
 
-import leui.woojoo.domain.sms.SmsService;
-import leui.woojoo.domain.users.entity.Users;
-import leui.woojoo.domain.users.service.AuthService;
+import leui.woojoo.bounded_context.games.service.GamesService;
+import leui.woojoo.bounded_context.sms.SmsService;
+import leui.woojoo.bounded_context.users.entity.Users;
+import leui.woojoo.bounded_context.users.service.AuthService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+
+import java.util.List;
 
 @Configuration
 @Profile({"test"})
@@ -14,7 +17,8 @@ public class Init {
     @Bean
     CommandLineRunner initData(
             AuthService authService,
-            SmsService smsService
+            SmsService smsService,
+            GamesService gamesService
     ) {
         return args -> {
             Users users = Users.builder()
@@ -26,6 +30,8 @@ public class Init {
             authService.save(users);
 
             smsService.save("1111", "000000");
+
+            gamesService.updateGameList(users.getId(), List.of("leagueoflegends", "overwatch"));
         };
     }
 }
