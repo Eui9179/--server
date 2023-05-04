@@ -1,4 +1,4 @@
-package leui.woojoo.utils;
+package leui.woojoo.base.utils;
 
 import leui.woojoo.bounded_context.games.entity.Games;
 

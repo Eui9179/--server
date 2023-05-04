@@ -5,7 +5,7 @@ import leui.woojoo.bounded_context.users.dto.web.FriendIdRequest;
 import leui.woojoo.bounded_context.users.dto.web.MyFriendsResponse;
 import leui.woojoo.bounded_context.users.dto.web.NewFriendResponse;
 import leui.woojoo.bounded_context.users.service.RelationshipService;
-import leui.woojoo.utils.UserUtils;
+import leui.woojoo.base.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;

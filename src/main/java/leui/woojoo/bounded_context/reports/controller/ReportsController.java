@@ -2,7 +2,7 @@ package leui.woojoo.bounded_context.reports.controller;
 
 import leui.woojoo.bounded_context.reports.service.ReportsService;
 import leui.woojoo.bounded_context.reports.dto.ReportRequest;
-import leui.woojoo.utils.UserUtils;
+import leui.woojoo.base.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;

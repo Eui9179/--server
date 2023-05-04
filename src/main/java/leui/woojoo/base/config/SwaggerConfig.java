@@ -1,4 +1,4 @@
-package leui.woojoo.config;
+package leui.woojoo.base.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;

@@ -4,7 +4,7 @@ import leui.woojoo.bounded_context.groups.dto.GroupSimple;
 import leui.woojoo.bounded_context.groups.service.GroupsService;
 import leui.woojoo.bounded_context.users.dto.UserInList;
 import leui.woojoo.bounded_context.users.service.UsersService;
-import leui.woojoo.utils.UserUtils;
+import leui.woojoo.base.utils.UserUtils;
 import leui.woojoo.bounded_context.groups.dto.web.MyGroupResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

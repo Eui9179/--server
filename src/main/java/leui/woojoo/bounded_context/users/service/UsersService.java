@@ -1,7 +1,7 @@
 package leui.woojoo.bounded_context.users.service;
 
 import leui.woojoo.DataNotFoundException;
-import leui.woojoo.utils.GameUtils;
+import leui.woojoo.base.utils.GameUtils;
 import leui.woojoo.bounded_context.games.dto.Game;
 import leui.woojoo.bounded_context.games.entity.Games;
 import leui.woojoo.bounded_context.groups.dto.GroupSimple;

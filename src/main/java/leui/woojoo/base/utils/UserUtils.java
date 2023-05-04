@@ -1,4 +1,4 @@
-package leui.woojoo.utils;
+package leui.woojoo.base.utils;
 
 import org.springframework.security.core.userdetails.User;
 

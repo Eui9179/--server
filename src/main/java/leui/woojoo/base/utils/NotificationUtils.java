@@ -1,4 +1,4 @@
-package leui.woojoo.utils;
+package leui.woojoo.base.utils;
 
 import com.google.firebase.messaging.*;
 import lombok.RequiredArgsConstructor;

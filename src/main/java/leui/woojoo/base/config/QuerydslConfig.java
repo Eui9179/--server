@@ -1,4 +1,4 @@
-package leui.woojoo.config;
+package leui.woojoo.base.config;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;

@@ -3,7 +3,7 @@ package leui.woojoo.bounded_context.games.controller;
 import leui.woojoo.bounded_context.games.dto.MyGameResponse;
 import leui.woojoo.bounded_context.games.dto.UpdatedGameNicknameRequest;
 import leui.woojoo.bounded_context.games.service.GamesService;
-import leui.woojoo.utils.UserUtils;
+import leui.woojoo.base.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

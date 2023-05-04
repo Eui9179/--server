@@ -54,6 +54,5 @@ class GameControllerTest {
         String contentAsString = result.getResponse().getContentAsString();
         Assertions.assertTrue(contentAsString.contains("leagueoflegends"));
         Assertions.assertTrue(contentAsString.contains("overwatch"));
-        System.out.println("contentAsString = " + contentAsString);
     }
 }

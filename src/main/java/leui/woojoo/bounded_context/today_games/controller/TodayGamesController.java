@@ -4,7 +4,7 @@ import com.google.firebase.messaging.FirebaseMessagingException;
 import leui.woojoo.bounded_context.today_games.dto.CreateTodayGameRequest;
 import leui.woojoo.bounded_context.today_games.dto.TodayGamesResponse;
 import leui.woojoo.bounded_context.today_games.service.TodayGamesService;
-import leui.woojoo.utils.UserUtils;
+import leui.woojoo.base.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;

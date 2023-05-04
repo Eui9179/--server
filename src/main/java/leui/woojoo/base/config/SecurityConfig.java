@@ -1,7 +1,7 @@
-package leui.woojoo.config;
+package leui.woojoo.base.config;
 
-import leui.woojoo.jwt.JwtAuthenticationFilter;
-import leui.woojoo.jwt.JwtProvider;
+import leui.woojoo.base.jwt.JwtAuthenticationFilter;
+import leui.woojoo.base.jwt.JwtProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

@@ -1,6 +1,6 @@
 package leui.woojoo.bounded_context.groups.service;
 
-import leui.woojoo.utils.GameUtils;
+import leui.woojoo.base.utils.GameUtils;
 import leui.woojoo.bounded_context.games.entity.Games;
 import leui.woojoo.bounded_context.groups.entity.Groups;
 import leui.woojoo.bounded_context.groups.entity.GroupsRepository;
