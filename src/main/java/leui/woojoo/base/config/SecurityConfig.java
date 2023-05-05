@@ -51,8 +51,9 @@ public class SecurityConfig {
 //                .requestMatchers(PathRequest.toH2Console()).permitAll()
                 .requestMatchers("/api/auth/login").permitAll()
                 .requestMatchers("/api/auth/signup").permitAll()
-                .requestMatchers("/api/sms").permitAll()
+                .requestMatchers("/api/sms-code").permitAll()
                 .requestMatchers("/api/sms-auth").permitAll()
+                .requestMatchers("/api/auth/test").permitAll()
 
                 .requestMatchers("/v3/api-docs/**").permitAll()
                 .requestMatchers("/swagger-ui/index.html").permitAll()

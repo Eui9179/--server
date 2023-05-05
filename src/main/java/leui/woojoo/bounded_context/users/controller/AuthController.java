@@ -33,6 +33,11 @@ public class AuthController {
     private final JwtProvider jwtProvider;
     private final FileUtils fileUtils;
 
+    @GetMapping("/test")
+    public String jmeterTest() {
+        return "ok";
+    }
+
     @PostMapping(value = "/signup", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<SignupResponse> signup(SignupRequest requestDto) throws IllegalStateException, IOException {
 
