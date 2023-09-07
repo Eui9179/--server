@@ -2,12 +2,11 @@ package leui.woojoo.bounded_context.users.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import leui.woojoo.DataNotFoundException;
-import leui.woojoo.bounded_context.sms.Sms;
-import leui.woojoo.bounded_context.sms.SmsRepository;
-import leui.woojoo.bounded_context.users.controller.AuthController;
+import leui.woojoo.bounded_context.sms.entity.Sms;
+import leui.woojoo.bounded_context.sms.repository.SmsRepository;
 import leui.woojoo.bounded_context.users.dto.web.LoginRequest;
 import leui.woojoo.bounded_context.users.entity.Users;
-import leui.woojoo.bounded_context.users.entity.UsersRepository;
+import leui.woojoo.bounded_context.users.repository.UsersRepository;
 import leui.woojoo.bounded_context.users.dto.web.SignupResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

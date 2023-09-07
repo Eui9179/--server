@@ -1,5 +1,6 @@
-package leui.woojoo.bounded_context.groups.entity;
+package leui.woojoo.bounded_context.groups.repository;
 
+import leui.woojoo.bounded_context.groups.entity.Groups;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

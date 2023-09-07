@@ -26,7 +26,6 @@ import java.io.IOException;
 public class UsersController {
 
     private final UsersService usersService;
-    private final FileUtils fileUtils;
 
     @GetMapping("/me")
     public UserDetail getMyProfile(@AuthenticationPrincipal User user) {
@@ -43,41 +42,11 @@ public class UsersController {
     @PostMapping("/setting")
     public ResponseEntity<String> setProfile(@AuthenticationPrincipal User user, @ModelAttribute UserSettingRequest request) throws IOException {
         Long userId = UserUtils.resolveUserId(user);
-        UserDetail userDetail = usersService.findUserDetailById(userId);
-
-        UserProfileUpdate userProfileUpdate = new UserProfileUpdate();
-        String profileImageName = "default.png";
-
-        if (request.getIsFile().equals("true")) {
-            if (request.getFile() != null) {
-                if (!userDetail.getProfileImageName().equals("default")) {
-                    fileUtils.delete(userDetail.getProfileImageName(), "profile");
-                }
-                profileImageName = fileUtils.upload(request.getFile(), "profile");
-            } else {
-                if (!userDetail.getProfileImageName().equals("default.png")) {
-                    fileUtils.delete(userDetail.getProfileImageName(), "profile");
-                }
-            }
-            userProfileUpdate.setProfileImageName(profileImageName);
-        }
-        if (request.getName() != null) {
-            userProfileUpdate.setName(request.getName());
-        }
-
-        if (request.getIsGroup().equals("true")) {
-            userProfileUpdate.setGroupName(request.getGroupName());
-            userProfileUpdate.setGroupDetail(request.getGroupDetail1());
-        }
-
-        if (!usersService.updateUserProfile(userId, userProfileUpdate)) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(profileImageName, HttpStatus.OK);
+        return usersService.updateUserSetting(userId, request);
     }
 
     @GetMapping(value = "/profile/image/{filename}", produces = MediaType.IMAGE_JPEG_VALUE)
     public Resource getUserProfileImage(@PathVariable String filename) throws IOException {
-        return fileUtils.download(filename, "profile");
+        return usersService.getProfileImage(filename);
     }
 }

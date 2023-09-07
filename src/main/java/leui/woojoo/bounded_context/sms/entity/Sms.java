@@ -1,4 +1,4 @@
-package leui.woojoo.bounded_context.sms;
+package leui.woojoo.bounded_context.sms.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

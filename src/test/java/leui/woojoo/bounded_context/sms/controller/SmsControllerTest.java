@@ -1,10 +1,9 @@
 package leui.woojoo.bounded_context.sms.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import leui.woojoo.bounded_context.sms.Sms;
-import leui.woojoo.bounded_context.sms.SmsController;
-import leui.woojoo.bounded_context.sms.SmsRepository;
-import leui.woojoo.bounded_context.sms.SmsService;
+import leui.woojoo.bounded_context.sms.entity.Sms;
+import leui.woojoo.bounded_context.sms.repository.SmsRepository;
+import leui.woojoo.bounded_context.sms.service.SmsService;
 import leui.woojoo.bounded_context.users.dto.web.CpRequest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

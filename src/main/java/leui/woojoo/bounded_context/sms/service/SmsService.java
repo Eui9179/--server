@@ -1,13 +1,15 @@
-package leui.woojoo.bounded_context.sms;
+package leui.woojoo.bounded_context.sms.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import leui.woojoo.DataNotFoundException;
-import leui.woojoo.base.event.EventSendSms;
+import leui.woojoo.bounded_context.sms.entity.Sms;
+import leui.woojoo.bounded_context.sms.repository.SmsRepository;
 import leui.woojoo.bounded_context.users.dto.Messages;
 import leui.woojoo.bounded_context.users.dto.web.SmsRequest;
 import leui.woojoo.bounded_context.users.dto.web.SmsResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationEventPublisher;
@@ -31,6 +33,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class SmsService {
@@ -48,8 +51,9 @@ public class SmsService {
 
     public void sendAuthCode(String phoneNumber) {
         String cp = String.valueOf(ThreadLocalRandom.current().nextInt(100000, 1000000));
+        log.info("cp: {}", cp);
         save(phoneNumber, cp);
-        publisher.publishEvent(new EventSendSms(this, phoneNumber, genCpText(cp)));
+//        publisher.publishEvent(new EventSendSms(this, phoneNumber, genCpText(cp)));
     }
 
     @Transactional

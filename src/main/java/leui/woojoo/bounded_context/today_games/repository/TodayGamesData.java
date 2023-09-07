@@ -1,4 +1,4 @@
-package leui.woojoo.bounded_context.today_games.entity;
+package leui.woojoo.bounded_context.today_games.repository;
 
 import java.time.LocalDateTime;
 

@@ -3,7 +3,7 @@ package leui.woojoo.bounded_context.groups.service;
 import leui.woojoo.base.utils.GameUtils;
 import leui.woojoo.bounded_context.games.entity.Games;
 import leui.woojoo.bounded_context.groups.entity.Groups;
-import leui.woojoo.bounded_context.groups.entity.GroupsRepository;
+import leui.woojoo.bounded_context.groups.repository.GroupsRepository;
 import leui.woojoo.bounded_context.users.dto.UserInList;
 import leui.woojoo.bounded_context.users.entity.Users;
 import leui.woojoo.bounded_context.users.service.UsersService;

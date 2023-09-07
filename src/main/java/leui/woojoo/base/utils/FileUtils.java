@@ -22,7 +22,7 @@ public class FileUtils {
 
     public String upload(MultipartFile file, String kind) throws IOException {
         if (file == null || file.isEmpty()) {
-            return "default.png";
+            return null;
         }
 
         long nowDate = System.currentTimeMillis();

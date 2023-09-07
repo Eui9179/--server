@@ -1,7 +1,7 @@
 package leui.woojoo.bounded_context.reports.service;
 
 import leui.woojoo.bounded_context.reports.entity.Reports;
-import leui.woojoo.bounded_context.reports.entity.ReportsRepository;
+import leui.woojoo.bounded_context.reports.repository.ReportsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

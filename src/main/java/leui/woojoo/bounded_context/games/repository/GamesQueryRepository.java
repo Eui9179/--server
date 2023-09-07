@@ -1,6 +1,7 @@
-package leui.woojoo.bounded_context.games.entity;
+package leui.woojoo.bounded_context.games.repository;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import leui.woojoo.bounded_context.games.entity.Games;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,7 @@
 package leui.woojoo.base.init_data;
 
 import leui.woojoo.bounded_context.games.service.GamesService;
-import leui.woojoo.bounded_context.sms.SmsService;
+import leui.woojoo.bounded_context.sms.service.SmsService;
 import leui.woojoo.bounded_context.users.entity.Users;
 import leui.woojoo.bounded_context.users.service.AuthService;
 import org.springframework.boot.CommandLineRunner;

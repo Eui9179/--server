@@ -1,7 +1,7 @@
 package leui.woojoo.bounded_context.users.service;
 
 import leui.woojoo.bounded_context.users.entity.Users;
-import leui.woojoo.bounded_context.users.entity.UsersRepository;
+import leui.woojoo.bounded_context.users.repository.UsersRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

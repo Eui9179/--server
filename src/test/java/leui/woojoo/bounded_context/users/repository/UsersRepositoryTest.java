@@ -1,7 +1,6 @@
 package leui.woojoo.bounded_context.users.repository;
 
 import leui.woojoo.bounded_context.users.entity.Users;
-import leui.woojoo.bounded_context.users.entity.UsersRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,7 @@ public class UsersRepositoryTest {
         //given
         String name = "leui";
         String phoneNumber = "+821026649179";
-        String profileImageName = "default.png";
+        String profileImageName = null;
         String fcmToken = "1234";
 
         //when

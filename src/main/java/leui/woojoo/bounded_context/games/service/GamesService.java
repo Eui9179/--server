@@ -3,7 +3,7 @@ package leui.woojoo.bounded_context.games.service;
 import leui.woojoo.DataNotFoundException;
 import leui.woojoo.bounded_context.games.entity.Games;
 import leui.woojoo.bounded_context.games.dto.Game;
-import leui.woojoo.bounded_context.games.entity.GamesRepository;
+import leui.woojoo.bounded_context.games.repository.GamesRepository;
 import leui.woojoo.bounded_context.users.entity.Users;
 import leui.woojoo.bounded_context.users.service.UsersService;
 import lombok.RequiredArgsConstructor;

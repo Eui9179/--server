@@ -1,5 +1,6 @@
-package leui.woojoo.bounded_context.today_games.entity;
+package leui.woojoo.bounded_context.today_games.repository;
 
+import leui.woojoo.bounded_context.today_games.entity.TodayGames;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

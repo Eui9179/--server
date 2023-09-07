@@ -1,10 +1,10 @@
 package leui.woojoo.bounded_context.today_games.dto;
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import leui.woojoo.bounded_context.games.entity.Games;
 import leui.woojoo.bounded_context.today_games.entity.TodayGames;
-import leui.woojoo.bounded_context.today_games.entity.TodayGamesData;
+import leui.woojoo.bounded_context.today_games.repository.TodayGamesData;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
+@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class TodayGameDetail {
     private Long todaysGameId;
     private Long id;

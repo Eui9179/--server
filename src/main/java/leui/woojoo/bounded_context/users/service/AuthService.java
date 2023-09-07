@@ -2,7 +2,7 @@ package leui.woojoo.bounded_context.users.service;
 
 import leui.woojoo.DataNotFoundException;
 import leui.woojoo.bounded_context.users.entity.Users;
-import leui.woojoo.bounded_context.users.entity.UsersRepository;
+import leui.woojoo.bounded_context.users.repository.UsersRepository;
 import leui.woojoo.bounded_context.users.dto.UserDetail;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

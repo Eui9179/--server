@@ -1,7 +1,8 @@
-package leui.woojoo.bounded_context.sms;
+package leui.woojoo.bounded_context.sms.eventlistener;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import leui.woojoo.base.event.EventSendSms;
+import leui.woojoo.bounded_context.sms.service.SmsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;

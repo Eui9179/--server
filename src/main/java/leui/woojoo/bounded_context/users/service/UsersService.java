@@ -1,6 +1,7 @@
 package leui.woojoo.bounded_context.users.service;
 
 import leui.woojoo.DataNotFoundException;
+import leui.woojoo.base.utils.FileUtils;
 import leui.woojoo.base.utils.GameUtils;
 import leui.woojoo.bounded_context.games.dto.Game;
 import leui.woojoo.bounded_context.games.entity.Games;
@@ -10,13 +11,18 @@ import leui.woojoo.bounded_context.users.dto.UserDetail;
 import leui.woojoo.bounded_context.users.dto.UserInList;
 import leui.woojoo.bounded_context.users.dto.UserProfileUpdate;
 import leui.woojoo.bounded_context.users.dto.web.UserProfileResponse;
+import leui.woojoo.bounded_context.users.dto.web.UserSettingRequest;
 import leui.woojoo.bounded_context.users.entity.Users;
-import leui.woojoo.bounded_context.users.entity.FriendId;
-import leui.woojoo.bounded_context.users.entity.UsersRepository;
+import leui.woojoo.bounded_context.users.repository.FriendIds;
+import leui.woojoo.bounded_context.users.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -26,6 +32,7 @@ import java.util.Set;
 @Service
 public class UsersService {
     private final UsersRepository usersRepository;
+    private final FileUtils fileUtils;
 
     @Transactional
     public void asyncFcmToken(Long userId, String fcm) {
@@ -139,7 +146,7 @@ public class UsersService {
     public List<Long> findMyFriendIdAllById(Long userId) {
         return usersRepository.findFriendIdAllById(userId)
                 .stream()
-                .map(FriendId::getFriendId)
+                .map(FriendIds::getFriendId)
                 .toList();
     }
 
@@ -155,5 +162,43 @@ public class UsersService {
         return friends.stream()
                 .map(Users::getFcmToken)
                 .toList();
+    }
+
+    public ResponseEntity<String> updateUserSetting(Long userId, UserSettingRequest request) throws IOException {
+        UserDetail userDetail = findUserDetailById(userId);
+
+        UserProfileUpdate userProfileUpdate = new UserProfileUpdate();
+        String profileImageName = null;
+
+        if (request.getIsFile().equals("true")) {
+            if (request.getFile() != null) {
+                if (!userDetail.getProfileImageName().equals("default")) {
+                    fileUtils.delete(userDetail.getProfileImageName(), "profile");
+                }
+                profileImageName = fileUtils.upload(request.getFile(), "profile");
+            } else {
+                if (!userDetail.getProfileImageName().equals("default.png")) {
+                    fileUtils.delete(userDetail.getProfileImageName(), "profile");
+                }
+            }
+            userProfileUpdate.setProfileImageName(profileImageName);
+        }
+        if (request.getName() != null) {
+            userProfileUpdate.setName(request.getName());
+        }
+
+        if (request.getIsGroup().equals("true")) {
+            userProfileUpdate.setGroupName(request.getGroupName());
+            userProfileUpdate.setGroupDetail(request.getGroupDetail1());
+        }
+
+        if (!updateUserProfile(userId, userProfileUpdate)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(profileImageName, HttpStatus.OK);
+    }
+
+    public Resource getProfileImage(String filename) throws IOException {
+        return fileUtils.download(filename, "profile");
     }
 }

@@ -1,6 +1,6 @@
 package leui.woojoo.bounded_context.users.controller;
 
-import leui.woojoo.bounded_context.sms.SmsService;
+import leui.woojoo.bounded_context.sms.service.SmsService;
 import leui.woojoo.bounded_context.users.dto.web.*;
 import leui.woojoo.bounded_context.users.entity.Users;
 import leui.woojoo.base.jwt.JwtProvider;

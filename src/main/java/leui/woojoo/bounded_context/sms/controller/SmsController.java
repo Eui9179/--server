@@ -1,6 +1,7 @@
-package leui.woojoo.bounded_context.sms;
+package leui.woojoo.bounded_context.sms.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import leui.woojoo.bounded_context.sms.service.SmsService;
 import leui.woojoo.bounded_context.users.dto.web.CpRequest;
 import leui.woojoo.bounded_context.users.dto.web.PhoneNumberRequest;
 import lombok.RequiredArgsConstructor;

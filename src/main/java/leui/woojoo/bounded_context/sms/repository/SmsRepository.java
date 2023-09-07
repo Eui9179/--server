@@ -1,5 +1,6 @@
-package leui.woojoo.bounded_context.sms;
+package leui.woojoo.bounded_context.sms.repository;
 
+import leui.woojoo.bounded_context.sms.entity.Sms;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
