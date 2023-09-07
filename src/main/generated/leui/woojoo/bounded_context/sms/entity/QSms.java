@@ -1,4 +1,4 @@
-package leui.woojoo.bounded_context.sms;
+package leui.woojoo.bounded_context.sms.entity;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -7,7 +7,6 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
-import leui.woojoo.bounded_context.sms.entity.Sms;
 
 
 /**
@@ -16,7 +15,7 @@ import leui.woojoo.bounded_context.sms.entity.Sms;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QSms extends EntityPathBase<Sms> {
 
-    private static final long serialVersionUID = -829780119L;
+    private static final long serialVersionUID = -1374599042L;
 
     public static final QSms sms = new QSms("sms");
 
