@@ -21,8 +21,9 @@ public interface TodayGamesRepository extends JpaRepository<TodayGames, Long> {
             "AND U.id = G.users_id " +
             "AND G.game = TG.game_name " +
             "WHERE TG.created_date BETWEEN :today AND :tomorrow " +
-            "AND TG.users_id IN " +
-            "(SELECT friends_id FROM users_friends WHERE users_id=:userId OR friends_id=:userId) " +
+            "AND (TG.users_id IN " +
+            "(SELECT friends_id FROM users_friends WHERE users_id=:userId OR friends_id=:userId)" +
+            "OR TG.users_id=:userId) " +
             "ORDER BY TG.created_date DESC;",
             nativeQuery = true)
     List<TodayGamesData> findTodayGames(

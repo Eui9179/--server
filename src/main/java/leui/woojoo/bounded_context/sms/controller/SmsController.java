@@ -26,7 +26,7 @@ public class SmsController {
     private final SmsService smsService;
 
     @PostMapping("/sms-code")
-    public String sendSms(@RequestBody PhoneNumberRequest phoneNumber) throws UnsupportedEncodingException, NoSuchAlgorithmException, URISyntaxException, InvalidKeyException, JsonProcessingException {
+    public String sendSms(@RequestBody PhoneNumberRequest phoneNumber) {
         smsService.sendAuthCode(phoneNumber.getPhoneNumber());
         return "ok";
     }

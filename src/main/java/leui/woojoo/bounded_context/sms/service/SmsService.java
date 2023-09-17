@@ -3,6 +3,7 @@ package leui.woojoo.bounded_context.sms.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import leui.woojoo.DataNotFoundException;
+import leui.woojoo.base.event.EventSendSms;
 import leui.woojoo.bounded_context.sms.entity.Sms;
 import leui.woojoo.bounded_context.sms.repository.SmsRepository;
 import leui.woojoo.bounded_context.users.dto.Messages;
@@ -49,18 +50,20 @@ public class SmsService {
     private final SmsRepository smsRepository;
     private final ApplicationEventPublisher publisher;
 
+    @Transactional
     public void sendAuthCode(String phoneNumber) {
         String cp = String.valueOf(ThreadLocalRandom.current().nextInt(100000, 1000000));
         log.info("cp: {}", cp);
         save(phoneNumber, cp);
-//        publisher.publishEvent(new EventSendSms(this, phoneNumber, genCpText(cp)));
+        publisher.publishEvent(new EventSendSms(this, phoneNumber, genCpText(cp)));
     }
 
-    @Transactional
     public void save(String phoneNumber, String cp) {
-        Optional<Sms> oSmsAuthInfo = smsRepository.findByPhoneNumber(phoneNumber);
-        if (oSmsAuthInfo.isPresent()) {
-            oSmsAuthInfo.get().updateCp(cp);
+        Optional<Sms> opSms = smsRepository.findByPhoneNumber(phoneNumber);
+        if (opSms.isPresent()) {
+            Sms sms = opSms.get();
+            sms.updateCp(cp);
+            smsRepository.save(sms);
             return;
         }
         smsRepository.save(Sms.builder()

@@ -30,7 +30,7 @@ public class TodayGamesService {
 
     public List<TodayGameDetail> findAllByToday(Long userId) {
         LocalDateTime today = LocalDate.now().atStartOfDay();
-        LocalDateTime tomorrow = LocalDateTime.now().plusDays(1);
+        LocalDateTime tomorrow = today.plusDays(1).minusMinutes(1);
         List<TodayGamesData> todayGamesList = todayGamesRepository.findTodayGames(userId, today, tomorrow);
         return todayGamesList
                 .stream()

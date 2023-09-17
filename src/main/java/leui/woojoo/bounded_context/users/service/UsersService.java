@@ -164,6 +164,7 @@ public class UsersService {
                 .toList();
     }
 
+    @Transactional
     public ResponseEntity<String> updateUserSetting(Long userId, UserSettingRequest request) throws IOException {
         UserDetail userDetail = findUserDetailById(userId);
 

@@ -46,6 +46,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/sms-code").permitAll()
                 .requestMatchers("/api/sms-auth").permitAll()
                 .requestMatchers("/api/auth/test").permitAll()
+                .requestMatchers("/api/auth/async-token").permitAll()
                 .requestMatchers("/v3/api-docs/**").permitAll()
                 .requestMatchers("/swagger-ui/index.html").permitAll()
                 .requestMatchers("/swagger-ui/**").permitAll()
