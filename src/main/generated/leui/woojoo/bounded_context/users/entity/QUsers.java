@@ -35,7 +35,7 @@ public class QUsers extends EntityPathBase<Users> {
 
     public final ListPath<leui.woojoo.bounded_context.games.entity.Games, leui.woojoo.bounded_context.games.entity.QGames> games = this.<leui.woojoo.bounded_context.games.entity.Games, leui.woojoo.bounded_context.games.entity.QGames>createList("games", leui.woojoo.bounded_context.games.entity.Games.class, leui.woojoo.bounded_context.games.entity.QGames.class, PathInits.DIRECT2);
 
-    public final leui.woojoo.bounded_context.groups.entity.QGroups groups;
+    public final leui.woojoo.bounded_context.groups.entity.QGroups group;
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
@@ -63,7 +63,7 @@ public class QUsers extends EntityPathBase<Users> {
 
     public QUsers(Class<? extends Users> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.groups = inits.isInitialized("groups") ? new leui.woojoo.bounded_context.groups.entity.QGroups(forProperty("groups"), inits.get("groups")) : null;
+        this.group = inits.isInitialized("group") ? new leui.woojoo.bounded_context.groups.entity.QGroups(forProperty("group"), inits.get("group")) : null;
     }
 
 }

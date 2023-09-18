@@ -5,7 +5,6 @@ import leui.woojoo.bounded_context.groups.service.GroupsService;
 import leui.woojoo.bounded_context.users.dto.UserInList;
 import leui.woojoo.bounded_context.users.service.UsersService;
 import leui.woojoo.base.utils.UserUtils;
-import leui.woojoo.bounded_context.groups.dto.web.MyGroupResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
@@ -26,12 +25,9 @@ public class GroupsController {
     private final GroupsService groupsService;
 
     @GetMapping("/me")
-    public MyGroupResponse getMyGroup(@AuthenticationPrincipal User user) {
+    public GroupSimple getMyGroup(@AuthenticationPrincipal User user) {
         Long userId = UserUtils.resolveUserId(user);
-        GroupSimple myGroup = usersService.findUserGroupsByUserId(userId);
-        return MyGroupResponse.builder()
-                .myGroups(List.of(myGroup))
-                .build();
+        return usersService.findUserGroupsByUserId(userId);
     }
 
     @GetMapping("/{name}")

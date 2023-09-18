@@ -57,7 +57,7 @@ public class UsersService {
     public GroupSimple findUserGroupsByUserId(Long userId) {
         Users users = usersRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 유저가 없습니다. " + userId));
-        return new GroupSimple(users.getGroups());
+        return new GroupSimple(users.getGroup());
     }
 
     @Transactional
@@ -78,7 +78,7 @@ public class UsersService {
         }
 
         if (userProfileUpdate.getGroupName() != null) {
-            Groups userGroup = user.getGroups();
+            Groups userGroup = user.getGroup();
             userGroup.update(userProfileUpdate.getGroupName(), userProfileUpdate.getGroupDetail());
         }
         return true;
@@ -93,7 +93,7 @@ public class UsersService {
         boolean isFriend = myFriendIds.contains(otherId);
 
         Users other = findById(otherId);
-        GroupSimple otherGroup = new GroupSimple(other.getGroups());
+        GroupSimple otherGroup = new GroupSimple(other.getGroup());
         List<Game> otherGames = findUserGames(other);
         Set<Users> otherFriends = other.getFriends();
 
