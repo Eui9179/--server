@@ -1,11 +1,12 @@
 package leui.woojoo.bounded_context.users.dto.web;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
-@Setter
+@Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserSettingRequest {
@@ -15,10 +16,6 @@ public class UserSettingRequest {
     private String is_group;
     private String group_name;
     private String group_detail1;
-
-    public String getName() {
-        return name;
-    }
 
     public String getIsFile() {
         return is_file;
@@ -34,9 +31,5 @@ public class UserSettingRequest {
 
     public String getIsGroup() {
         return is_group;
-    }
-
-    public MultipartFile getFile() {
-        return file;
     }
 }

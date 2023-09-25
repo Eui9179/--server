@@ -13,7 +13,7 @@ public interface TodayGamesRepository extends JpaRepository<TodayGames, Long> {
 
     @Query(value = "SELECT DISTINCT(TG.id) AS todaysGameId, U.id as id, U.name as name, " +
             "U.profile_image_name as profileImageName, TG.game_name as game, G.nickname as gameNickname, " +
-            "TG.descriptions as introduction, TG.created_date as createTime " +
+            "TG.description as introduction, TG.created_date as createTime " +
             "FROM today_games AS TG " +
             "INNER JOIN users AS U " +
             "INNER JOIN games AS G " +

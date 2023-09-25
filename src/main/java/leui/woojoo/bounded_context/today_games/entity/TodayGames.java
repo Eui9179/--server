@@ -22,12 +22,12 @@ public class TodayGames extends BaseTimeEntity {
     private String gameName;
 
     @Column(length = 200)
-    private String descriptions;
+    private String description;
 
     @Builder
-    public TodayGames(Users users, String gameName, String descriptions) {
+    public TodayGames(Users users, String gameName, String description) {
         this.users = users;
         this.gameName = gameName;
-        this.descriptions = descriptions;
+        this.description = description;
     }
 }

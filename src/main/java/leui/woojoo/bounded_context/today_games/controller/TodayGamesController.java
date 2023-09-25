@@ -2,7 +2,7 @@ package leui.woojoo.bounded_context.today_games.controller;
 
 import com.google.firebase.messaging.FirebaseMessagingException;
 import leui.woojoo.bounded_context.today_games.dto.CreateTodayGameRequest;
-import leui.woojoo.bounded_context.today_games.dto.TodayGamesResponse;
+import leui.woojoo.bounded_context.today_games.dto.TodayGameDetail;
 import leui.woojoo.bounded_context.today_games.service.TodayGamesService;
 import leui.woojoo.base.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +10,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -20,9 +21,9 @@ public class TodayGamesController {
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping
-    public TodayGamesResponse getTodayGames(Principal principal) {
+    public List<TodayGameDetail> getTodayGames(Principal principal) {
         Long userId = UserUtils.resolveUserId(principal);
-        return new TodayGamesResponse(todayGamesService.findAllByToday(userId));
+        return todayGamesService.findAllByToday(userId);
     }
 
     @PreAuthorize("isAuthenticated()")

@@ -27,7 +27,7 @@ public class QTodayGames extends EntityPathBase<TodayGames> {
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdDate = _super.createdDate;
 
-    public final StringPath descriptions = createString("descriptions");
+    public final StringPath description = createString("description");
 
     public final StringPath gameName = createString("gameName");
 

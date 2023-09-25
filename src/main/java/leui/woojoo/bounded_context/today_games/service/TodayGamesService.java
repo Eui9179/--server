@@ -44,10 +44,10 @@ public class TodayGamesService {
         TodayGames entity = TodayGames.builder()
                 .users(user)
                 .gameName(todayGame.getGame())
-                .descriptions(todayGame.getIntroduction())
+                .description(todayGame.getDescription())
                 .build();
         todayGamesRepository.save(entity);
-        sendTodayGameNotification(user, todayGame.getGame(), todayGame.getIntroduction());
+        sendTodayGameNotification(user, todayGame.getGame(), todayGame.getDescription());
     }
 
     public void sendTodayGameNotification(Users user, String game, String gameDescription) {

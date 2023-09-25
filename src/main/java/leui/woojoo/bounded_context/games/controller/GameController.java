@@ -1,6 +1,6 @@
 package leui.woojoo.bounded_context.games.controller;
 
-import leui.woojoo.bounded_context.games.dto.MyGameResponse;
+import leui.woojoo.bounded_context.games.dto.Game;
 import leui.woojoo.bounded_context.games.dto.UpdatedGameNicknameRequest;
 import leui.woojoo.bounded_context.games.service.GamesService;
 import leui.woojoo.base.utils.UserUtils;
@@ -21,15 +21,15 @@ public class GameController {
     private final GamesService gamesService;
 
     @GetMapping("/me")
-    public MyGameResponse getMyGames(@AuthenticationPrincipal User user) {
+    public List<Game> getMyGames(@AuthenticationPrincipal User user) {
         Long userId = UserUtils.resolveUserId(user);
-        return new MyGameResponse(gamesService.findGamesByUserId(userId));
+        return gamesService.findGamesByUserId(userId);
     }
 
     @PostMapping
-    public MyGameResponse updateMyGames(@AuthenticationPrincipal User user, @RequestBody List<String> gameList) {
+    public List<Game> updateMyGames(@AuthenticationPrincipal User user, @RequestBody List<String> gameList) {
         Long userId = UserUtils.resolveUserId(user);
-        return new MyGameResponse(gamesService.updateGameList(userId, gameList));
+        return gamesService.updateGameList(userId, gameList);
     }
 
     @PreAuthorize("isAuthenticated()")

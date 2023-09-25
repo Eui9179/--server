@@ -26,11 +26,11 @@ public class RelationshipController {
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/friends/me")
-    public MyFriendsResponse getMyFriends(Principal principal) {
+    public List<UserInList> getMyFriends(Principal principal) {
         Long userId = UserUtils.resolveUserId(principal);
         List<UserInList> myFriends = new ArrayList<>(relationshipService.findFriendInListAll(userId));
         Collections.sort(myFriends);
-        return new MyFriendsResponse(myFriends);
+        return myFriends;
     }
 
     @PreAuthorize("isAuthenticated()")

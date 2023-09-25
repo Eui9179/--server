@@ -10,5 +10,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CreateTodayGameRequest {
     private String game;
-    private String introduction;
+    private String description;
 }

@@ -73,7 +73,7 @@ public class UsersService {
             user.updateUserName(userProfileUpdate.getName());
         }
 
-        if (userProfileUpdate.getProfileImageName() != null) {
+        if (userProfileUpdate.getProfileImageName() == null || !userProfileUpdate.getProfileImageName().equals(user.getProfileImageName())) {
             user.updateProfileImageName(userProfileUpdate.getProfileImageName());
         }
 
@@ -173,15 +173,16 @@ public class UsersService {
 
         if (request.getIsFile().equals("true")) {
             if (request.getFile() != null) {
-                if (!userDetail.getProfileImageName().equals("default")) {
+                if (userDetail.getProfileImageName() != null) {
                     fileUtils.delete(userDetail.getProfileImageName(), "profile");
                 }
                 profileImageName = fileUtils.upload(request.getFile(), "profile");
             } else {
-                if (!userDetail.getProfileImageName().equals("default.png")) {
+                if (userDetail.getProfileImageName() != null) {
                     fileUtils.delete(userDetail.getProfileImageName(), "profile");
                 }
             }
+
             userProfileUpdate.setProfileImageName(profileImageName);
         }
         if (request.getName() != null) {
