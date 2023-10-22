@@ -2,8 +2,6 @@ package leui.woojoo.bounded_context.today_games.dto;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import leui.woojoo.bounded_context.games.entity.Games;
-import leui.woojoo.bounded_context.today_games.entity.TodayGames;
 import leui.woojoo.bounded_context.today_games.repository.TodayGamesData;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,7 +21,7 @@ public class TodayGameDetail {
     private String gameNickname;
     private String introduction;
     private String createTime;
-    private boolean isme;
+    private boolean isMe;
 
     public static TodayGameDetail of(TodayGamesData entity, Long userId) {
         return new TodayGameDetail(entity, userId);
@@ -37,7 +35,7 @@ public class TodayGameDetail {
         this.game = entity.getGame();
         this.introduction = entity.getIntroduction();
         this.createTime = entity.getCreateTime().toString();
-        this.isme = userId.equals(entity.getId());
+        this.isMe = userId.equals(entity.getId());
         this.gameNickname = entity.getGameNickname();
 
 //        for (Games games : entity.getUsers().getGames()) {
