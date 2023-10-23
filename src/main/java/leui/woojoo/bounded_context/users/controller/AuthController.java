@@ -41,7 +41,7 @@ public class AuthController {
     @PostMapping(value = "/signup", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<SignupResponse> signup(SignupRequest requestDto) throws IllegalStateException, IOException {
 
-        if (authService.findByPhoneNumber(requestDto.getPhone_number()) != null) {
+        if (authService.findByPhoneNumber(requestDto.getPhoneNumber()) != null) {
             return new ResponseEntity<>(new SignupResponse(), HttpStatus.CONFLICT);
         }
 
@@ -49,7 +49,7 @@ public class AuthController {
         Users users = authService.save(requestDto.toUserEntity(profileImageName));
 
         groupsService.save(requestDto.toUserGroupEntity(users));
-        smsService.delete(requestDto.getPhone_number());
+        smsService.delete(requestDto.getPhoneNumber());
 
         String token = jwtProvider.createToken(users.getId());
         return new ResponseEntity<>(new SignupResponse(token), HttpStatus.OK);
@@ -87,7 +87,7 @@ public class AuthController {
         return "ok";
     }
 
-    @PostMapping("/async-token")
+    @PostMapping("/sync-token")
     @ResponseStatus(HttpStatus.OK)
     public String asyncFcmToken(@AuthenticationPrincipal User user, @RequestBody FcmRequest fcmRequest) {
         usersService.asyncFcmToken(UserUtils.resolveUserId(user), fcmRequest.getFcmToken());

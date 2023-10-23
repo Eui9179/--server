@@ -15,28 +15,28 @@ import org.springframework.web.multipart.MultipartFile;
 @NoArgsConstructor
 public class SignupRequest {
     String name;
-    String phone_number;
+    String phoneNumber;
     MultipartFile file;
     String groups;
     String detail1;
-    String fcm_token;
+    String fcmToken;
 
     @Builder
-    public SignupRequest(String name, String phone_number, MultipartFile file, String groups, String detail1, String fcm_token) {
+    public SignupRequest(String name, String phoneNumber, MultipartFile file, String groups, String detail1, String fcmToken) {
         this.name = name;
-        this.phone_number = phone_number;
+        this.phoneNumber = phoneNumber;
         this.file = file;
         this.groups = groups;
         this.detail1 = detail1;
-        this.fcm_token = fcm_token;
+        this.fcmToken = fcmToken;
     }
 
     public Users toUserEntity(String profileImageName) {
         return Users.builder()
                 .name(name)
-                .phoneNumber(phone_number)
+                .phoneNumber(phoneNumber)
                 .profileImageName(profileImageName)
-                .fcmToken(fcm_token)
+                .fcmToken(fcmToken)
                 .build();
     }
 

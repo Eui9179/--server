@@ -1,6 +1,5 @@
 package leui.woojoo.bounded_context.users.dto.web;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import leui.woojoo.bounded_context.users.dto.UserInList;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,6 +10,5 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NewFriendResponse {
-    @JsonProperty("new_friend")
     private UserInList newFriend;
 }

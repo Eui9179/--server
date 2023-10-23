@@ -9,7 +9,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class LoginResponse {
-    @JsonProperty("access_token")
     private String accessToken;
 
     public LoginResponse(String accessToken) {

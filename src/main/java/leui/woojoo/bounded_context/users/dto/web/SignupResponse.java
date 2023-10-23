@@ -11,6 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SignupResponse {
-    @JsonProperty("access_token")
     String accessToken;
 }

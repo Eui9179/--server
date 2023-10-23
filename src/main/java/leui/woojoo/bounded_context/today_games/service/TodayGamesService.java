@@ -34,7 +34,7 @@ public class TodayGamesService {
         List<TodayGamesData> todayGamesList = todayGamesRepository.findTodayGames(userId, today, tomorrow);
         return todayGamesList
                 .stream()
-                .map(todayGame -> TodayGameDetail.of(todayGame, userId))
+                .map(todaysGame -> TodayGameDetail.of(todaysGame, userId))
                 .toList();
     }
 

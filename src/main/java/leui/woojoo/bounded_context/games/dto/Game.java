@@ -9,11 +9,11 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 public class Game {
-    private String game;
+    private String name;
     private String nickname;
 
     public Game(Games games) {
-        this.game  = games.getGame();
+        this.name = games.getGame();
         this.nickname = games.getNickname();
     }
 }

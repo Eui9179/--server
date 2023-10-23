@@ -47,7 +47,7 @@ public class GroupsService {
             Users other = group.getUsers();
             if (blocklist.contains(other.getId()) || group.getUsers().getId().equals(userId)) continue;
 
-            List<String> gameIntersection = GameUtils.getGameIntersection(userEntity.getGames(), games);
+            List<String> gameIntersection = GameUtils.getGameIntersection(userEntity.getGames(), other.getGames());
 
             UserInList userInList = UserInList.builder()
                     .id(other.getId())

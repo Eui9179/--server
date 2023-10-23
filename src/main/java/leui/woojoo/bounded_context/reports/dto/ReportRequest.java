@@ -8,7 +8,6 @@ import lombok.Setter;
 
 @Getter @Setter
 @NoArgsConstructor
-@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class ReportRequest {
     private Long reportedUserId;
     private Integer reportNumbers;

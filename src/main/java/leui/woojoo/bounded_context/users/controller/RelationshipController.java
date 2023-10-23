@@ -2,7 +2,6 @@ package leui.woojoo.bounded_context.users.controller;
 
 import leui.woojoo.bounded_context.users.dto.UserInList;
 import leui.woojoo.bounded_context.users.dto.web.FriendIdRequest;
-import leui.woojoo.bounded_context.users.dto.web.MyFriendsResponse;
 import leui.woojoo.bounded_context.users.dto.web.NewFriendResponse;
 import leui.woojoo.bounded_context.users.service.RelationshipService;
 import leui.woojoo.base.utils.UserUtils;

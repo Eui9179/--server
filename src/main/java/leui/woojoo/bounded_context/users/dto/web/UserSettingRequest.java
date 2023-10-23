@@ -11,25 +11,9 @@ import org.springframework.web.multipart.MultipartFile;
 @NoArgsConstructor
 public class UserSettingRequest {
     private String name;
-    private String is_file;
+    private String isFile;
     private MultipartFile file;
-    private String is_group;
-    private String group_name;
-    private String group_detail1;
-
-    public String getIsFile() {
-        return is_file;
-    }
-
-    public String getGroupName() {
-        return group_name;
-    }
-
-    public String getGroupDetail1() {
-        return group_detail1;
-    }
-
-    public String getIsGroup() {
-        return is_group;
-    }
+    private String isGroup;
+    private String groupName;
+    private String groupDetail1;
 }

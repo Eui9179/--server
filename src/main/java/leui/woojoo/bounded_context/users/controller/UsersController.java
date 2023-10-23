@@ -34,7 +34,8 @@ public class UsersController {
 
     @GetMapping("/{userId}")
     public UserProfileResponse getUserProfile(
-            @AuthenticationPrincipal User user, @PathVariable Long userId) {
+            @AuthenticationPrincipal User user, @PathVariable Long userId
+    ) {
         Long myId = UserUtils.resolveUserId(user);
         return usersService.findUserProfileByUserIdAndOtherId(myId, userId);
     }

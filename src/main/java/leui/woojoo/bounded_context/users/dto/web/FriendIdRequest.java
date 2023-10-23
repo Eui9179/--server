@@ -8,6 +8,5 @@ import lombok.Setter;
 @Getter @Setter
 @NoArgsConstructor
 public class FriendIdRequest {
-    @JsonProperty("friend_id")
     private Long friendId;
 }

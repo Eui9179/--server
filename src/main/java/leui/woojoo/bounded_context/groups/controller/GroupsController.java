@@ -37,8 +37,11 @@ public class GroupsController {
     }
 
     @GetMapping("/{name}/{detail1}")
-    public Map<String, List<UserInList>> getPeopleByGroupDetail(@AuthenticationPrincipal User user, @PathVariable("name") String groupName,
-                                       @PathVariable("detail1") String groupDetail) {
+    public Map<String, List<UserInList>> getPeopleByGroupDetail(
+            @AuthenticationPrincipal User user,
+            @PathVariable("name") String groupName,
+            @PathVariable("detail1") String groupDetail
+    ) {
         Long userId = UserUtils.resolveUserId(user);
         return groupsService.findUsersByGroup(userId, groupName, groupDetail);
     }
