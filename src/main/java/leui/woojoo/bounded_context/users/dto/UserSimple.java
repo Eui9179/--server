@@ -9,7 +9,7 @@ import lombok.*;
 @ToString
 @Builder
 public class UserSimple {
-    private Long userId;
+    private Long id;
     private String name;
     private String profileImageName;
 }

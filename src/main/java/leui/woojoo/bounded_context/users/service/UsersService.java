@@ -123,10 +123,10 @@ public class UsersService {
         Collections.sort(userFriends);
 
         return UserProfileResponse.builder()
-                .userProfile(other.toProfile())
+                .userSimple(other.toProfile())
                 .isFriend(isFriend)
-                .userGroups(new ArrayList<>(Collections.singletonList(otherGroup)))
-                .userGames(otherGames)
+                .group(otherGroup)
+                .games(otherGames)
                 .alreadyFriends(alreadyFriends)
                 .userFriends(userFriends)
                 .build();

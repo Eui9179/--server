@@ -2,7 +2,6 @@ package leui.woojoo.bounded_context.users.controller;
 
 import leui.woojoo.bounded_context.users.dto.UserInList;
 import leui.woojoo.bounded_context.users.dto.web.FriendIdRequest;
-import leui.woojoo.bounded_context.users.dto.web.NewFriendResponse;
 import leui.woojoo.bounded_context.users.service.RelationshipService;
 import leui.woojoo.base.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
@@ -42,10 +41,10 @@ public class RelationshipController {
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/friend")
-    public NewFriendResponse insertFriend(Principal principal, @RequestBody FriendIdRequest friendRequest) {
+    public UserInList insertFriend(Principal principal, @RequestBody FriendIdRequest friendRequest) {
         Long userId = UserUtils.resolveUserId(principal);
         Long friendId = friendRequest.getFriendId();
-        return new NewFriendResponse(relationshipService.insertFriend(userId, friendId));
+        return relationshipService.insertFriend(userId, friendId);
     }
 
     @PreAuthorize("isAuthenticated()")

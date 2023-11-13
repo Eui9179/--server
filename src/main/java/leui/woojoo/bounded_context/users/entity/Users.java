@@ -56,7 +56,7 @@ public class Users extends BaseTimeEntity {
 
     public UserSimple toProfile() {
         return UserSimple.builder()
-                .userId(id)
+                .id(id)
                 .name(name)
                 .profileImageName(profileImageName)
                 .build();

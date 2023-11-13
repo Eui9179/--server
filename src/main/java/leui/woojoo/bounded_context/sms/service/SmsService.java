@@ -55,7 +55,7 @@ public class SmsService {
         String cp = String.valueOf(ThreadLocalRandom.current().nextInt(100000, 1000000));
         log.info("cp: {}", cp);
         save(phoneNumber, cp);
-        publisher.publishEvent(new EventSendSms(this, phoneNumber, genCpText(cp)));
+//        publisher.publishEvent(new EventSendSms(this, phoneNumber, genCpText(cp)));
     }
 
     public void save(String phoneNumber, String cp) {

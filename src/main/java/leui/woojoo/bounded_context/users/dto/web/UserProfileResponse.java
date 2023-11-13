@@ -17,10 +17,10 @@ import java.util.List;
 @Builder
 @Getter
 public class UserProfileResponse {
-    private UserSimple userProfile;
+    private UserSimple userSimple;
     private boolean isFriend;
-    private List<GroupSimple> userGroups;
-    private List<Game> userGames;
+    private GroupSimple group;
+    private List<Game> games;
     private ArrayList<UserInList> alreadyFriends;
     private ArrayList<UserInList> userFriends;
 
